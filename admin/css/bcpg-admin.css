@@ -1,0 +1,76 @@
+
+
+.precargador {
+    position: absolute;
+    background: rgba(255, 255, 255, 0.72);
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    z-index: 99;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    display: none;
+}
+
+.marcoimg {
+    width: 80px;
+    height: 80px;
+    overflow: hidden;
+    border-radius: 50%;
+    position: relative;
+}
+
+.marcoimg img {
+    width: 90px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate( -50%, -50% );
+    transform: translate( -50%, -50% );
+}
+
+.bcpg-media {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%
+}
+
+.bg-animado {
+    animation: bganimado 1.4s;
+    -webkit-animation: bganimado 1.4s;
+}
+
+@keyframes bganimado {
+    0% { background: green; }
+    100% { background: transparent; }
+}
+
+@-webkit-keyframes bganimado {
+    0% { background: green; }
+    100% { background: transparent; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
