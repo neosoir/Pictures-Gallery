@@ -20,7 +20,7 @@ $result = $this->db->get_results( $sql );
 ?>
 
 <!-- Modal Structure -->
-<div id="add_bcpg_table" class="modal">
+<div id="addbcpg" class="modal">
     <div class="modal-content">
         
         <!-- Precargador -->
@@ -76,15 +76,22 @@ $result = $this->db->get_results( $sql );
             <div class="row">
                
                 <div class="input-field col s4">
-                    <input id="nombre-tabla" type="text" class="validate">
-                    <label for="nombre">Nombre de la tabla</label>
+                    <input id="nombre-bcpg" type="text" class="validate">
+                    <label for="nombre-bcpg">Nombre de la Galeria</label>
+                </div>
+                <div class="input-field col s6">
+                  <select name="type" id="type">
+                    <option value="" disabled selected>Seleccionar tipo</option>
+                    <option value="custom">Perzonalizada</option>
+                    <option value="category">Personalizada</option>
+                  </select>
                 </div>
            
             </div>
             
             <div class="row">
                 <div class="col s4">
-                    <button id="crear-tabla" class="btn waves-effect waves-light" type="button" name="action">
+                    <button id="crear-bcpg" class="btn waves-effect waves-light" type="button" name="action">
                         Crear <i class="material-icons right">add</i>
                     </button>
                 </div>
@@ -101,6 +108,8 @@ $result = $this->db->get_results( $sql );
     <div class="col s12">
       <div class="logo-bcpg">
         <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core.svg" alt="">
+        <span class="border-v v-31"></span>
+        <span><?= esc_html_e('Portafolio Galeria', 'bcpg_textdomain') ?></span>
       </div>
     </div>
   </div>
@@ -109,6 +118,47 @@ $result = $this->db->get_results( $sql );
     <div class="divider"></div>
   </div>
 
+  <!-- Button to add galery -->
+  <div class="section">
+    <div class="row">
+      <button ty class="addbcpg btn-bcpg btn-azul">Nuevo <i class="material-icons">insert-photo</i></button>
+    </div>
+  </div>
+
+  <!-- Table of shortcodes -->
+  <div class="row">
+    <div class="col s12">
+      <div class="bcpg-table">
+        <table class="responsive-table">
+          <thead>
+            <tr>
+              <th>Nombre</th>
+              <th>Tipo</th>
+              <th>shortcode</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Fotos</td>
+              <td>Custom</td>
+              <td>
+                <input type="text" class="bcpg-input-shortcode" value='[bcpg id=\"1"]'>
+              </td>
+              <td>
+                <span>
+                  <i class="tiny material-icons">mode_edit</i>
+                </span>
+                <span>
+                  <i class="tiny material-icons">close</i>
+                </span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </div>
 
 

@@ -100,9 +100,9 @@
     $('.modal').modal();
     
     /* Modal con formulario para crear tabla */
-    $('.add-bcpg-table').on( 'click', function(e){
+    $('.addbcpg').on( 'click', function(e){
         e.preventDefault();
-        $('#add_bcpg_table').modal('open');
+        $('#addbcpg').modal('open');
     });
     
     /**
