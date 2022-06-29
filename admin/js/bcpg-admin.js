@@ -105,34 +105,66 @@
         e.preventDefault();
         $('#addbcpg').modal('open');
     });
+
+    var $type = $('#type'),
+        type_val = null,
+        $select = $('.select-dropdown');
+
+    $type.on('change',  function() {
+        type_val = $(this).val();
+        if ( $select.hasClass('invalid') ) {
+            $select.removeClass('invalid');
+            $select.addClass('valid'); 
+        }
+        console.log(type_val);
+    });
     
     /**
      * Evento click para guardar
      * el registro en la base de datos
      * utilizando AJAX
      */
-    $('#crear-tabla').on( 'click', function(e){
+    $('#crear-bcpg').on( 'click', function(e){
         e.preventDefault();
         
-        var $nombre = $('#nombre-tabla'),
+        var $nombre = $('#nombre-bcpg'),
             nv =  $nombre.val();
+
+        $precargador.css( 'display', 'flex' );
         
-        if( nv != '' ) {
+        if( nv == '' ) {
             
-            $precargador.css( 'display', 'flex' );
-            
+            $precargador.css( 'display', 'none' );
+
+            if ( ! $nombre.hasClass('invalid') ) {
+                $nombre.addClass('invalid');
+            }
+
+        }
+        else if ( ( type_val == null ) || ( type_val == '' ) ) {
+
+            $precargador.css( 'display', 'none' );
+
+            if ( ! $select.hasClass('invalid') ) {
+                $select.addClass('invalid');
+                $select.removeClass('valid');   
+            }
+
+        }
+        else {
             // Envío de AJAX
-            
-            $.ajax({
+        
+            /* $.ajax({
                 url         : bcpg.url,
                 type        : 'POST',
                 dataType    : 'json',
                 data : {
-                    action  : 'bcpg_crud_table',
-                    nonce   : bcpg.seguridad,
-                    nombre  : nv,
-                    tipo    : 'add'
-                }, success  : function( data ) {
+                    action      : 'bcpg_crud_gallery',
+                    nonce       : bcpg.seguridad,
+                    nombre      : nv,
+                    type_val    : type_val,
+                    tipo        : 'add'
+                }, success      : function( data ) {
                     
                     if( data.result ) {
                         
@@ -151,17 +183,11 @@
                     console.log(v);
                     
                 }
-            });
-            
-        } else {
-            
-            $precargador.css( 'display', 'none' );
-            
-            if( ! $nombre.hasClass('invalid') ) {
-                $nombre.addClass('invalid');
-            }
-            
+            }); */
+
         }
+            
+    
         
     });
     
