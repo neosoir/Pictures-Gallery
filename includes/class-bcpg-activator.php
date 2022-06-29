@@ -33,14 +33,15 @@ class BCPG_Activator {
         
         global $wpdb;
         
-        /*$sql = "CREATE TABLE IF NOT EXISTS " . BCPG_TABLE . "(
+        $sql = "CREATE TABLE IF NOT EXISTS " . BCPG_TABLE . "(
             id int(11) NOT NULL AUTO_INCREMENT,
             nombre varchar(50) NOT NULL,
+            tipo varchar(50) NOT NULL,
             data longtext NOT NULL,
             PRIMARY KEY (id)
         );";
         
-        $wpdb->query( $sql );*/
+        $wpdb->query( $sql );
         
 	}
 

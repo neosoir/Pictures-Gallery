@@ -96,7 +96,19 @@ $result = $this->db->get_results( $sql );
 </div>
 
 <div class="had-container">
-      
+
+  <div class="row">
+    <div class="col s12">
+      <div class="logo-bcpg">
+        <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core.svg" alt="">
+      </div>
+    </div>
+  </div>
+
+  <div class="col s12">
+    <div class="divider"></div>
+  </div>
+
 </div>
 
 
