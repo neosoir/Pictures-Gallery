@@ -98,6 +98,7 @@
     }
     
     $('.modal').modal();
+    $('select').material_select();
     
     /* Modal con formulario para crear tabla */
     $('.addbcpg').on( 'click', function(e){

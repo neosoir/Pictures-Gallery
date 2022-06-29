@@ -83,7 +83,7 @@ $result = $this->db->get_results( $sql );
                   <select name="type" id="type">
                     <option value="" disabled selected>Seleccionar tipo</option>
                     <option value="custom">Perzonalizada</option>
-                    <option value="category">Personalizada</option>
+                    <option value="category">Categoría</option>
                   </select>
                 </div>
            
@@ -121,7 +121,9 @@ $result = $this->db->get_results( $sql );
   <!-- Button to add galery -->
   <div class="section">
     <div class="row">
-      <button ty class="addbcpg btn-bcpg btn-azul">Nuevo <i class="material-icons">insert-photo</i></button>
+      <div class="col s4">
+        <button ty class="addbcpg btn-bcpg bcpg-bg-azul">Nuevo <i class="material-icons">insert_photo</i></button>
+      </div>
     </div>
   </div>
 
@@ -139,6 +141,21 @@ $result = $this->db->get_results( $sql );
             </tr>
           </thead>
           <tbody>
+            <tr>
+              <td>Fotos</td>
+              <td>Custom</td>
+              <td>
+                <input type="text" class="bcpg-input-shortcode" value='[bcpg id=\"1"]'>
+              </td>
+              <td>
+                <span>
+                  <i class="tiny material-icons">mode_edit</i>
+                </span>
+                <span>
+                  <i class="tiny material-icons">close</i>
+                </span>
+              </td>
+            </tr>
             <tr>
               <td>Fotos</td>
               <td>Custom</td>
