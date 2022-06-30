@@ -92,7 +92,26 @@
                 // Add img to edid page
             templateItems   :   function ( arrItems ) {
         
-                var template = '';
+                var template    = '',
+                    col         = parseInt( $('#columnas').val() ),
+                    classCol    = '';
+
+                    switch (col) {
+                        case 2:
+                            classCol = 'm6'
+                            break;
+                            
+                        case 3:
+                            classCol = 'm4'
+                            break;
+
+                        case 4:
+                            classCol = 'm3'
+                            break;
+                
+                        default:
+                            break;
+                    }
 
                 for ( var i in arrItems ) {
                     
@@ -100,7 +119,7 @@
                         id  = arrItems[i].id;
 
                     template += `
-                        <li class="col m4 bcpg-item" data-f="" data-id="${id}">
+                        <li class="col ${ classCol } bcpg-item" data-f="" data-id="${id}">
 
                             <div class="bcpg-box">
                                 <div class="edit-item">

@@ -36,6 +36,11 @@ ul.bcpg-ul li:hover {
     position: relative;
 }
 
+.bcpg-box img {
+    height: 170px;
+    object-fit: cover;
+}
+
 .bcpg-box .bcpg-masc {
     display: -webkit-box;
     display: -ms-flexbox;
