@@ -112,11 +112,13 @@ $result = $this->db->get_results( $sql );
         <span><?= esc_html_e('Portafolio Galeria', 'bcpg_textdomain') ?></span>
       </div>
     </div>
+
+    <div class="col s12">
+      <div class="divider"></div>
+    </div>
   </div>
 
-  <div class="col s12">
-    <div class="divider"></div>
-  </div>
+
 
   <!-- Button to add galery -->
   <div class="section">
