@@ -236,8 +236,8 @@ class BCPG_Admin {
     public function add_menu() {
         
         $this->build_menupage->add_menu_page(
-            __( 'BC Portafolio Galería', 'bcpg-textdomain' ),
-            __( 'BC Portafolio Galería', 'bcpg-textdomain' ),
+            __( 'Portafolio Galería', 'bcpg-textdomain' ),
+            __( 'Portafolio Galería', 'bcpg-textdomain' ),
             'manage_options',
             'bcpg',
             [ $this, 'controlador_display_menu' ],

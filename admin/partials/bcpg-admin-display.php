@@ -107,7 +107,7 @@ $result = $this->db->get_results( $sql );
   <div class="row">
     <div class="col s12">
       <div class="logo-bcpg">
-        <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core.svg" alt="">
+        <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core-50.svg" alt="">
         <span class="border-v v-31"></span>
         <span><?= esc_html_e('Portafolio Galeria', 'bcpg_textdomain') ?></span>
       </div>
