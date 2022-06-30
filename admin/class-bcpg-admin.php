@@ -212,7 +212,7 @@ class BCPG_Admin {
          * Archivo Javascript principal
          * de la administración
          */
-        wp_enqueue_script( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'admin/js/bcpg-admin.min.js', ['jquery'], $this->version, true );
+        wp_enqueue_script( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'admin/js/bcpg-admin.js', ['jquery'], $this->version, true );
         
         /**
          * Lozalizando el archivo Javascript

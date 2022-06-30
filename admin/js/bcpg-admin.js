@@ -14,9 +14,6 @@
         idTable        = $('#idTable').val(),
         marco;
     
-
-
-    
     $('.modal').modal();
     $('select').material_select();
     
@@ -266,6 +263,110 @@
             $('.bcpg-container').append( output )
 
         });
+
+    });
+
+    // Change the img depending th columns
+    $('#columnas').on('change', function (params) {
+        
+        var $this       = $(this),
+            valor       = parseInt( $this.val() ),
+            $items      = $('.bcpg-item'),
+            $itemsCat   = $('.bcpg-carditem');
+
+
+
+        if ( $items.length ) {
+
+            var arrClass    = $items.attr('class').split(' '),
+               er          = /m[346]/,
+                r           = null,
+                col         = null;
+
+            for (var i in arrClass) {
+                r = arrClass[i].match( er );
+
+                if( r != null ) col = r['input'];
+            }
+
+            if ( col !== null ) {
+
+                if ( $items ) {
+                    if ( $items.hasClass(col) ) {
+
+                        $items.removeClass(col);
+
+                        switch ( valor ) {
+
+                            case 2:
+                                $items.addClass('m6');
+                                break;
+                                
+                            case 3:
+                                $items.addClass('m4');
+                                break;
+    
+                            case 4:
+                                $items.addClass('m3');
+                                break;
+                    
+                        }
+
+                    }
+
+                }
+                
+            }
+            
+        }
+
+        if ( $itemsCat.length ) {
+
+            var arrClass    = $itemsCat.attr('class').split(' '),
+                er          = /m[346]/,
+                r           = null,
+                col         = null;
+
+            for (var i in arrClass) {
+                r = arrClass[i].match( er );
+
+                console.log( r )
+                if( r != null ) col = r['input'];
+            }
+
+            if ( col !== null ) {
+
+                if ( $itemsCat ) {
+
+                    if ( $itemsCat.hasClass(col) ) {
+
+                        $itemsCat.removeClass(col);
+
+                        switch ( valor ) {
+                            
+                            case 2:
+                                $items.addClass('m6');
+                                break;
+                                
+                            case 3:
+                                $items.addClass('m4');
+                                break;
+    
+                            case 4:
+                                $items.addClass('m3');
+                                break;
+                    
+                        }
+
+                    }
+
+                }
+                
+            }
+            
+        }
+
+
 
     });
 

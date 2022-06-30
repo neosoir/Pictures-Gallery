@@ -245,90 +245,21 @@ $settings   = $data['settings'];
                   <div class="row">
                         <div class="categoryTemplate">
                             
-                            <?php
-                            
-                            if( $resultado[0]->data != '' ) {
-                                
-                                
-                                $outputItemsCard   = '';
-                                $val_columns       = $settings['columns'];
-                                $category          = $settings['category'];
-                                $postPerPage       = $settings['postPerPage'];
-                                $order             = $settings['order'];
-                                $orderby           = $settings['orderby'];
-                                
-                                switch( $val_columns ) {
-                                    case 2:
-                                        $column = 'm6';
-                                        break;
-                                    case 3:
-                                        $column = 'm4';
-                                        break;
-                                    case 4:
-                                        $column = 'm3';
-                                        break;
-                                    
-                                }
-                                
-                                if( ! is_null( $category ) && $category != '' ) {
-                                    
-                                    $args_query = [
-                                      'cat'               => $category,
-                                      'posts_per_page'    => $postPerPage,
-                                      'order'             => $order,
-                                      'orderby'           => $orderby
-                                  ];
 
-                                  $query = new WP_Query( $args_query );
-                                    
-                                    if( $query->have_posts() ) {
-                                        
-                                        while( $query->have_posts() ) {
-                                            
-                                            $query->the_post();
-                                            
-                                            $title     = get_the_title();
-                                            $excerpt   = get_the_excerpt();
-                                            $link      = get_the_permalink();
-                                            $time      = get_the_time( 'F j Y' );
-                                            
-                                            if( has_post_thumbnail() ) {
-                                              
-                                              $src = get_the_post_thumbnail_url(
-                                                  get_the_ID(),
-                                                  'medium'
-                                              );
+                          <div class='bcpg-carditem col s12 m4 '>
 
-                                          } else {
-                                              $src = '';
-                                          }
-                                            
-                                            $outputItemsCard .= "
-                                              <div class='bcpg-carditem col s12 $column'>
-                                                  <div class='card'>
-                                                      <div class='card-image'>
-                                                          <img src='$src' alt='$title'>
-                                                          <span class='card-title'>$title</span>
-                                                          <a target='_blank' href='$link' class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>link</i></a>
-                                                      </div>
-                                                      <div class='card-content'>$excerpt</p>
-                                                      </div>
-                                                  </div>
-                                              </div>";
-                                            
-                                        }
-                                        
-                                    }
-                                    
-                                    wp_reset_postdata();
-                                    
-                                    echo $outputItemsCard;
-                                    
-                                }
-                                
-                            }
-                            
-                            ?>
+                            <div class='card'>
+                                <div class='card-image'>
+                                    <img src='http://localhost/_curso01/wp-content/uploads/2022/06/pexels-nathan-cowley-1153369-scaled.jpg' alt='$title'>
+                                    <span class='card-title'>Cart title</span>
+                                    <a target='_blank' href='$link' class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>link</i></a>
+                                </div>
+                                <div class='card-content'>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Obcaecati, numquam maxime. Nihil minus consequatur, quibusdam nemo dolorum pariatur illum vitae sint cumque quo rerum, voluptate aliquid sit placeat assumenda officiis.</p>
+                                </div>
+                            </div>
+                              
+
+                          </div>
                             
                       </div>
                     </div>
