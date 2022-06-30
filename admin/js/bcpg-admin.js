@@ -109,18 +109,50 @@
         $('#addbcpg').modal('open');
     });
 
-    var $type = $('#type'),
-        type_val = null,
-        $select = $('.select-dropdown');
+    var $type               = $('#type'),
+        type_val            = null,
+        $select             = $('.select-dropdown'),
+        $selectionCustom    = $('#custom'),
+        $selectionCategory  = $('#category'),
+        $setCategory        = $('#setCategory');
+
+    /**
+     * Analizando el tipo de galeria
+     * para mostrar y ocultar ajusters y selecciones.
+     */
+     
+    if ( $type.val() =='custom' ) {
+        $selectionCustom.css('display', 'block');
+        $selectionCategory.css('display', 'none');
+        $setCategory.css('display', 'none');
+    }
+    else if ( $type.val() =='category' ) {
+        $selectionCustom.css('display', 'none');
+        $selectionCategory.css('display', 'block');
+        $setCategory.css('display', 'block');
+    }
 
     $type.on('change',  function() {
+
         type_val = $(this).val();
+
         if ( $select.hasClass('invalid') ) {
             $select.removeClass('invalid');
             $select.addClass('valid'); 
         }
-        console.log(type_val);
+        if ( type_val =='custom' ) {
+            $selectionCustom.css('display', 'block');
+            $selectionCategory.css('display', 'none');
+            $setCategory.css('display', 'none');
+        }
+        else if ( type_val =='category' ) {
+            $selectionCustom.css('display', 'none');
+            $selectionCategory.css('display', 'block');
+            $setCategory.css('display', 'block');
+        }
+
     });
+
     
     /**
      * Evento click para guardar
@@ -285,8 +317,9 @@
         });
 
     });
-    
-    
+
+
+
 })( jQuery );
 
 
