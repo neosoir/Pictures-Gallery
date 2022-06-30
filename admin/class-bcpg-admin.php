@@ -201,11 +201,18 @@ class BCPG_Admin {
         wp_enqueue_script( 'jquery_bcpg_js', BCPG_PLUGIN_DIR_URL . 'helpers/jquery-bcpg/js/bcpg.min.js', ['jquery'], $this->version, true );
 
         /**
+         * beziercode-globa.js
+         * Archivo Javascript principal
+         * de la administración
+         */
+        wp_enqueue_script( 'beziercode_global', BCPG_PLUGIN_DIR_URL . 'admin/js/beziercode-global.min.js', ['jquery'], $this->version, true );
+                
+        /**
          * bcpg-admin.js
          * Archivo Javascript principal
          * de la administración
          */
-        wp_enqueue_script( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'admin/js/bcpg-admin.js', ['jquery'], $this->version, true );
+        wp_enqueue_script( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'admin/js/bcpg-admin.min.js', ['jquery'], $this->version, true );
         
         /**
          * Lozalizando el archivo Javascript
