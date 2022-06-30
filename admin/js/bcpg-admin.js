@@ -99,6 +99,39 @@
         });
         
     }
+
+    function templateItems( arrItems ) {
+        
+        var template = '';
+
+        for ( var i in arrItems ) {
+            
+            var url =  arrItems[i].url ,
+                id  = arrItems[i].id;
+
+            template += `
+                <li class="col bcpg-item" data-f="" data-id="${id}">
+
+                    <div class="bcpg-box">
+                        <div class="edit-item">
+                            <i class="material-icons">edit</i>
+                        </div>
+                        <div class="remove-item">
+                            <i class="material-icons">close</i>
+                        </div>
+                        <div class="bcpg-masc">
+                            <i class="material-icons bcpg_img">zoom_in</i>
+                        </div>
+                        <img src="${url}" alt="">
+                    </div>
+
+                </li>`;
+            
+        }
+
+        return template;
+
+    }
     
     $('.modal').modal();
     $('select').material_select();
@@ -318,7 +351,36 @@
 
     });
 
+    var $addItems = $('#addItems'),
+        marco;
 
+    $addItems.on('click', function() {
+        console.log('hola')
+        if (marco) {
+            marco.open();
+            return;
+        }
+
+        marco = wp.media({
+            title   : 'Seleccionar esta imagen',
+            button  : {
+                text : 'Usar esta imagen'
+            },
+            multiple : true
+        });
+
+        marco.on('select', function () {
+
+            var adjuntos = marco.state().get('selection').map(function (adj) {
+                return adj.toJSON();
+            });
+
+            var output = templateItems( adjuntos );
+            $('.bcpg-container').append( output )
+
+        });
+
+    });
 
 })( jQuery );
 
