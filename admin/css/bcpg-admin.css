@@ -8,11 +8,7 @@
     top: 0;
     left: 0;
     z-index: 99;
-    -webkit-box-pack: center;
-    -ms-flex-pack: center;
     justify-content: center;
-    -webkit-box-align: center;
-    -ms-flex-align: center;
     align-items: center;
     display: none;
 }
@@ -30,7 +26,6 @@
     position: absolute;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate( -50%, -50% );
     transform: translate( -50%, -50% );
 }
 
@@ -42,7 +37,6 @@
 
 .bg-animado {
     animation: bganimado 1.4s;
-    -webkit-animation: bganimado 1.4s;
 }
 
 @keyframes bganimado {
@@ -55,17 +49,27 @@
     100% { background: transparent; }
 }
 
+/* =========--->
+-> Estilos Predefinidos
+=========---> */
 
-/* Color predefined */
+.bcpg-bg-azul {background: #51737d;}
 
-.bcpg-bg-azul {
-    background-color: #51737d;
-}
+.bcpg-bg-verde {background: #1eac12;}
+.bcpg-bg-verde:hover {background: #128008;}
+.bcpg-bg-verde:active {background: #128008;}
+.bcpg-bg-verde:focus {background: #128008;}
 
-/* Dashboard principal page */
+.bcpg-bg-azulC {background: #1b87b7;}
+.bcpg-bg-azulC:hover {background: #115574;color:white;}
+.bcpg-bg-azulC:active {background: #115574;color:white;}
+.bcpg-bg-azulC:focus {background: #115574;color:white;}
 
+.mb0 {margin-bottom: 0 !important;}
 
-
+/* =========--->
+-> Estilos Página Principal
+=========---> */
 
 .logo-bcpg {
     display: flex;
@@ -86,7 +90,7 @@
 span.border-v {
     width: 2px;
     border-right: 1px solid white;
-    background-color: rgba(173, 173, 173, 0.58);
+    background-color: rgba(173,173,173, 0.58);
     padding: 0 !important;
 }
 
@@ -102,7 +106,7 @@ span.border-v {
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 0px 8px 0px 13px;
+    padding: 0 8px 0 13px;
 }
 
 .btn-bcpg.bcpg-bg-azul:hover {
@@ -115,7 +119,7 @@ span.border-v {
 }
 
 .bcpg-table tbody tr {
-    border-bottom: 1px solid rgba(208, 208, 208, 0.45);
+    border-bottom: 1px solid rgba(208,208,208, 0.45);
 }
 
 .bcpg-table tbody tr:last-child {
@@ -135,11 +139,16 @@ input.bcpg-input-shortcode {
 
 input.bcpg-input-shortcode:focus {
     border-bottom: 0 !important;
+    -webkit-box-shadow: none !important;
     box-shadow: none !important;
 }
 
 .bcpg-table tbody tr td:last-child span {
     cursor: pointer;
+}
+
+.bcpg-table tbody tr td:last-child {
+    text-align: right;
 }
 
 .bcpg-table tbody tr td:last-child span:first-child:hover {
@@ -150,14 +159,143 @@ input.bcpg-input-shortcode:focus {
     color: red;
 }
 
-.bcpg-table tbody tr td:last-child {
-    text-align: right;
-}
-
 .card {
     padding: 0 !important;
-    min-height: auto !important;
+    min-width: auto !important;
 }
+
+
+/* =========--->
+-> Estilos Página de edición
+=========---> */
+
+.bcpg-input input {
+    background: white !important;
+    padding: 0 15px !important;
+    border-bottom: 0 !important;
+    border: 1px solid #e6e6e6 !important;
+    box-sizing: border-box !important;
+}
+
+.bcpg-input input:hover {
+    cursor: pointer;
+}
+
+.bcpg-input input:focus {
+    border: 1px solid #e6e6e6;
+}
+
+.edit-item,
+.remove-item {
+    position: absolute;
+    width: 42px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    cursor: pointer;
+    color: white;
+}
+
+.edit-item {
+    background: #00913e;
+}
+
+.edit-item:hover {
+    background: #015f29;
+}
+
+.remove-item {
+    background: #e61010;
+    right: 0;
+}
+
+.remove-item:hover {
+    background: #aa1010;
+}
+
+#guardar-items,
+#cancelar {
+    position: fixed;
+    bottom: 16px;
+    z-index: 999;
+}
+
+#guardar-items {right: 137px;}
+#cancelar {right: 21px;}
+
+.btn-bcpg i {margin-left: 5px;}
+
+section#custom,
+section#category {
+    display: none;
+    position: relative;
+}
+
+/* Estilos de modal de edición de items */
+
+h6.title-modal {
+    background: #293a3f;
+    color: white;
+    padding: 10px 15px;
+}
+
+.content-item {
+    padding: 10px;
+    border: 1px solid rgba(169,169,169, 0.4);
+}
+
+.content-item img {
+    width: 100%;
+}
+
+.title-item {
+    position: absolute;
+    z-index: 99;
+    background: rgba(255, 255, 255, 0.87);
+    width: 100%;
+    padding: 6px 0 7px 0;
+    text-align: center;
+    bottom: 21px;
+}
+
+.title-item h5 {
+    margin: 0;
+    padding: 0;
+}
+
+.loaderengine {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    display: none;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

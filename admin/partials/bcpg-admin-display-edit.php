@@ -465,8 +465,12 @@ $settings   = $data['settings'];
       
   </div>
       
-  <button type="button" id="guardar-items" class="btn-bcpg bcpg-bg-verde"><?= _e( 'Guardar', 'bcpg-textdomain' ); ?> <i class="material-icons">save</i> </button>
-  <a href="?page=bcpg" id="cancelar" class="btn-bcpg bcpg-bg-azulC"><?= _e( 'Cancelar', 'bcpg-textdomain' ); ?> <i class="material-icons">close</i> </a>
+  <button type="button" id="guardar-items" class="btn-bcpg bcpg-bg-verde">
+    <?= _e( 'Guardar', 'bcpg-textdomain' ); ?> <i class="material-icons">save</i> 
+  </button>
+  <a href="?page=bcpg" id="cancelar" class="btn-bcpg bcpg-bg-azulC"><?= _e( 'Cancelar', 'bcpg-textdomain' ); ?> 
+    <i class="material-icons">close</i> 
+  </a>
       
 </div>
 
