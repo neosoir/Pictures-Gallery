@@ -5,11 +5,17 @@ if( typeof jQuery == 'undefined' ) {
 (function( $ ) {
     
     'use strict';
-    console.log(gilbert);
+    
     /* Declarando Objeto y constructor */
     var BC_PortfolioGaleria = function( element, options, callback ) {
         this.$element = null;
         this.options  = null;
+        this.zoomfull = '<div id="bcpg-zoom">\
+                              <div>\
+                                  <img src="" alt="">\
+                              </div>\
+                          </div>';
+        this.overdark = '<div class="bcpg-overdark"></div>';
         
         this.init( element, options, callback );
         
@@ -29,6 +35,9 @@ if( typeof jQuery == 'undefined' ) {
         
         this.$element.children().addClass( this.options.item.replace( '.', '' ) );
         this.filtro(this.options);
+        
+        $('body').prepend(this.zoomfull + this.overdark);        
+        this.zoom();
         
         if( typeof callback == 'function' ) {
             callback.call(this);
@@ -87,6 +96,32 @@ if( typeof jQuery == 'undefined' ) {
                 }
                 
             }
+            
+        });
+        
+    }
+    
+    BC_PortfolioGaleria.prototype.zoom = function() {
+        
+        var $overdark   = $('.bcpg-overdark'),
+            $zoom       = $('#bcpg-zoom'),
+            $zoomImg    = $('#bcpg-zoom img'),
+            $bcpg_img   = $('.bcpg_img');
+        
+        $overdark.on('click', function(){
+            $(this).fadeOut();
+            $zoom.fadeOut();
+        });
+        
+        $(document).on('click', '.bcpg_img', function(){
+            
+            var $this   = $(this),
+                src     = $this.parent().parent().find('img').attr('src');
+            
+            $zoomImg.attr('src', src);
+            
+            $zoom.fadeIn();
+            $overdark.fadeIn();
             
         });
         

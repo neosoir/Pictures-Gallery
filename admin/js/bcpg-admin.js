@@ -366,7 +366,10 @@
             button  : {
                 text : 'Usar esta imagen'
             },
-            multiple : true
+            multiple : true,
+            library  : {
+                type  : 'image'
+            }
         });
 
         marco.on('select', function () {
