@@ -311,7 +311,9 @@ class BCPG_Admin {
                     'insert_id'     => $this->db->insert_id
                 ] );
                 
-            } elseif( $tipo == 'delete' ) {
+            } 
+            
+            elseif( $tipo == 'delete' ) {
                 
                 $where = [
                     'id' => $idgal

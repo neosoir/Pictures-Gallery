@@ -188,13 +188,102 @@
             });
 
         }
-            
-    
         
+    });
+
+    /**
+     * Edit forder.
+     */
+    $(document).on('click', '[idbcpgedit]', function() {
+        var id = $(this).attr('idbcpgedit');
+        location.href = urledit + id;
+    });
+
+    /**
+     * Delete item
+     */
+     $(document).on('click', '[idbcpgremove]', function(){
+
+        var id      = $(this).attr('idbcpgremove'),
+            $tr     = $('tr[data-bcpg="'+id+'"]'),
+            nombre  = $tr.find( $('td:nth-child(1)') ).text();
+
+        swal({
+            title               : "¿Estás seguro que quieres eliminar la galería '" + nombre + "'?",
+            text                : "No podrás deshacer esto!",
+            type                : "warning",
+            showCancelButton    : true,
+            confirmButtonColor  : "#DD6B55",
+            confirmButtonText   : "Si, borrarlo",
+            closeOnConfirm      : false,
+            showLoaderOnConfirm : true,
+            html                : true
+        }, function(isConfirm){
+
+            if( isConfirm ) {
+
+                $.ajax({
+                    url         : bcpg.url,
+                    type        : 'POST',
+                    dataType    : 'json',
+                    data : {
+                        action      : 'bcpg_crud_gallery',
+                        nonce       : bcpg.seguridad,
+                        tipo        : 'delete',
+                        idgal       : id
+                    }, success : function( data ) {
+
+                        if( data.result ) {
+
+                            setTimeout(function(){
+
+                                swal({
+                                    title       : "Borrado",
+                                    text        : "La galería " + nombre + " ha sido eliminado",
+                                    type        : "success",
+                                    timer       : 1500
+                                });
+                                $tr.css({
+                                    "background" : "red",
+                                    "color"      : "white"
+                                }).fadeOut(600)
+                                setTimeout(function(){
+                                    $tr.remove();
+                                }, 1000);
+
+                            }, 1500);
+
+                        } else {
+
+                            swal({
+                                title   : 'Error',
+                                text    : 'Hubo un error al eliminar la galería, por favor intenta más tarde',
+                                type    : 'error',
+                                timer   : 2000
+                            });
+
+                        }
+
+                    }, error: function( d,x,v ) {
+
+                        console.log(d);
+                        console.log(x);
+                        console.log(v);
+
+                    }
+                });
+
+            } else {
+
+
+
+            }
+
+        });
+
     });
     
     
-
 })( jQuery );
 
 
