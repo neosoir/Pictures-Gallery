@@ -5,6 +5,9 @@
 	 * Todo el código Javascript orientado a la administración
 	 * debe estar escrito aquí
 	 */
+
+    // Start the jquery plugin
+    $('.bcpg-container').bcpg();
     
     var $precargador    = $('.precargador'),
         urledit         = "?page=bcpg&action=edit&id=",

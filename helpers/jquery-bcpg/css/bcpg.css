@@ -76,7 +76,43 @@ ul.bcpg-ul li:hover {
     color: black;
 }
 
+#bcpg-zoom {
+    position: fixed;
+    z-index: 999999;
+    top: 50%;
+    left: 50%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transform: translate(-50%,-50%);
+    transform: translate(-50%,-50%);
+}
 
+#bcpg-zoom img {
+    display: block;
+    max-width: 500px;
+}
+
+.bcpg-overdark {
+    position: fixed;
+    z-index: 99999;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.75);
+}
+
+#bcpg-zoom,
+.bcpg-overdark {
+    display: none;
+}
 
 
 
