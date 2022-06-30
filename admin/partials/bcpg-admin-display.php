@@ -14,7 +14,7 @@
 
 /* Este archivo debe consistir principalmente en HTML con un poco de PHP. */
 
-$sql = "SELECT id, nombre FROM " . BCPG_TABLE;
+$sql    = "SELECT id, nombre, tipo FROM " . BCPG_TABLE;
 $result = $this->db->get_results( $sql );
 
 ?>
@@ -141,36 +141,24 @@ $result = $this->db->get_results( $sql );
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>Fotos</td>
-              <td>Custom</td>
-              <td>
-                <input type="text" class="bcpg-input-shortcode" value='[bcpg id=\"1"]'>
-              </td>
-              <td>
-                <span>
-                  <i class="tiny material-icons">mode_edit</i>
-                </span>
-                <span>
-                  <i class="tiny material-icons">close</i>
-                </span>
-              </td>
-            </tr>
-            <tr>
-              <td>Fotos</td>
-              <td>Custom</td>
-              <td>
-                <input type="text" class="bcpg-input-shortcode" value='[bcpg id=\"1"]'>
-              </td>
-              <td>
-                <span>
-                  <i class="tiny material-icons">mode_edit</i>
-                </span>
-                <span>
-                  <i class="tiny material-icons">close</i>
-                </span>
-              </td>
-            </tr>
+            <?php foreach ($result as $key => $value) : ?>
+              <tr data-bcpg="<?= $value->id ?>">
+                <td><?= $value->nombre ?></td>
+                <td><?= $value->tipo ?></td>
+                <td>
+                  <input type="text" class="bcpg-input-shortcode" value='[bcpg id="<?= $value->id ?>"]'>
+                </td>
+                <td>
+                  <span idbcpgedit="<?= $value->id ?>">
+                    <i class="tiny material-icons">mode_edit</i>
+                  </span>
+                  <span idbcpgremove="<?= $value->id ?>">
+                    <i class="tiny material-icons">close</i>
+                  </span>
+                </td>
+              </tr>
+            <?php endforeach; ?>
+
           </tbody>
         </table>
       </div>
