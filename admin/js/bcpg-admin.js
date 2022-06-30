@@ -154,7 +154,7 @@
         else {
             // Envío de AJAX
         
-            /* $.ajax({
+            $.ajax({
                 url         : bcpg.url,
                 type        : 'POST',
                 dataType    : 'json',
@@ -164,7 +164,8 @@
                     nombre      : nv,
                     type_val    : type_val,
                     tipo        : 'add'
-                }, success      : function( data ) {
+                }, 
+                success      : function( data ) {
                     
                     if( data.result ) {
                         
@@ -176,14 +177,15 @@
                         
                     }
                     
-                }, error: function( d,x,v ) {
+                }, 
+                error: function( d,x,v ) {
                     
                     console.log(d);
                     console.log(x);
                     console.log(v);
                     
                 }
-            }); */
+            });
 
         }
             

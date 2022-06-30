@@ -322,8 +322,11 @@ class BCPG_Admin {
                 ];
                 
                 $result = $this->db->delete( BCPG_TABLE, $where, $where_format );
+                
                 $json = json_encode( [
-                    'result' => $result
+                    'result'        =>  $result,
+                    'nombre'        =>  $nombre,
+                    'insert_id'     =>  $this->db>-insert_id
                 ] );
                 
             }
