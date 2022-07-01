@@ -289,9 +289,11 @@
                 col         = null;
 
             for (var i in arrClass) {
-                r = arrClass[i].match( er );
 
-                if( r != null ) col = r['input'];
+                if( typeof arrClass[i] != 'function' ) {
+                    r = arrClass[i].match( er );
+                    if( r != null ) col = r['input'];
+                }
             }
 
             if ( col !== null ) {
@@ -333,10 +335,11 @@
                 col         = null;
 
             for (var i in arrClass) {
-                r = arrClass[i].match( er );
 
-                console.log( r )
-                if( r != null ) col = r['input'];
+                if( typeof arrClass[i] != 'function' ) {
+                    r = arrClass[i].match( er );
+                    if( r != null ) col = r['input'];
+                }
             }
 
             if ( col !== null ) {
@@ -394,6 +397,24 @@
         var er      = /filters/,
             r       = null,
             arf     = null;
+
+        for (const i in filters) {
+
+            if( typeof filters[i] != 'function' ) {
+                r = filters[i].match(er);
+
+                if ( r !== null ) {
+                    arf = r['input'].split('=');
+                }
+            }
+        }
+
+        if ( arf !== null ) {
+            $('#edit-item-filters').val(arf[1]);   
+        }
+        else {
+            $('#edit-item-filters').val('');   
+        }
 
         $('#edit-item-id').val(id);
         $('#edit-item-title').val(title);
@@ -465,7 +486,7 @@
             'data-value'    :   valsUpdated.join(';'),
             'data-title'    :   title,
             'data-src'      :   src,
-            'data-f'        :   filters,
+            'data-f'        :   Beziercode.normalize(filters),
             'data-id'       :   idN
         });
 
@@ -481,12 +502,24 @@
             }
             
         }
+
         else {
             if ( title !== '' ) {
                 //var output = addTitleItem(title);
                 $item.find('.bcpg-masc').before(title);
             }
         }
+
+        // Filtros.
+
+        if ( $('.bcpg-container li').length ) {
+
+            $('ul.bcpg-ul').find('li').remove();
+            var filtersArr = Beziercode.analizadorFiltros('.bcpg-container li');
+            $('ul.bcpg-ul').append( Beziercode.templateBtnFilter( filtersArr ) );
+
+        }
+
 
 
     });

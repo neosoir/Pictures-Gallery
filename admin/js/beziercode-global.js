@@ -89,8 +89,8 @@
                 });
                 
             },
-                // Add img to edid page
-            templateItems   :   function ( arrItems ) {
+            // Add img to edid page
+            templateItems       :   function ( arrItems ) {
         
                 var template    = '',
                     col         = parseInt( $('#columnas').val() ),
@@ -114,38 +114,173 @@
                     }
 
                 for ( var i in arrItems ) {
+
+                    if( typeof arrItems[i] != 'function' ) {
                     
-                    var url =  arrItems[i].url ,
-                        id  = arrItems[i].id;
+                        var url =  arrItems[i].url ,
+                            id  = arrItems[i].id;
 
-                    template += `
-                        <li class="col ${ classCol } 
-                            bcpg-item" data-f="" 
-                            data-id="${ id }"
-                            data-src="${ url }"
-                            data-value="media='${ url }';id='${ id }'"
-                        >
+                        template += `
+                            <li class="col ${ classCol } 
+                                bcpg-item" data-f="" 
+                                data-id="${ id }"
+                                data-src="${ url }"
+                                data-value="media='${ url }';id='${ id }'"
+                            >
 
-                            <div class="bcpg-box">
-                                <div class="edit-item">
-                                    <i class="material-icons">edit</i>
+                                <div class="bcpg-box">
+                                    <div class="edit-item">
+                                        <i class="material-icons">edit</i>
+                                    </div>
+                                    <div class="remove-item">
+                                        <i class="material-icons">close</i>
+                                    </div>
+                                    <div class="bcpg-masc">
+                                        <i class="material-icons bcpg_img">zoom_in</i>
+                                    </div>
+                                    <img src="${url}" alt="">
                                 </div>
-                                <div class="remove-item">
-                                    <i class="material-icons">close</i>
-                                </div>
-                                <div class="bcpg-masc">
-                                    <i class="material-icons bcpg_img">zoom_in</i>
-                                </div>
-                                <img src="${url}" alt="">
-                            </div>
 
-                        </li>`;
+                            </li>`;
+                    }
                     
                 }
 
                 return template;
 
-            }
+            },
+            normalize : (function() {
+                var from = "ÃÀÁÄÂÈÉËÊÌÍÏÎÒÓÖÔÙÚÜÛãàáäâèéëêìíïîòóöôùúüûÑñÇç", 
+                    to   = "AAAAAEEEEIIIIOOOOUUUUaaaaaeeeeiiiioooouuuunncc",
+                    mapping = {};
+
+                for(var i = 0, j = from.length; i < j; i++ )
+                    mapping[ from.charAt( i ) ] = to.charAt( i );
+
+                return function( str ) {
+                    var ret = [];
+                    for( var i = 0, j = str.length; i < j; i++ ) {
+                        var c = str.charAt( i );
+                        if( mapping.hasOwnProperty( str.charAt( i ) ) )
+                            ret.push( mapping[ c ] );
+                        else
+                            ret.push( c );
+                    }      
+                    ret = ret.join( '' );
+
+                    var specialChars = "!@#$^&%*()+=-[]\/{}|:<>?.ç";
+
+                    for( var i = 0, j = specialChars.length; i < j; i++ ) {
+                        ret = ret.replace( new RegExp( "\\" + specialChars[i], 'gi' ), '' );
+                    }
+
+                    return ret;
+
+                }
+
+            })(),
+            analizadorFiltros   : function ( selector ) {
+
+                var obj = [];
+
+                $( selector ).each( function (i) {
+
+                    var $this       = $(this),
+                        dataValue   = $this.attr('data-value'),
+                        filters     = dataValue.split(';');
+
+                    var er      = /filters/,
+                        r       = null,
+                        arf     = null;
+            
+                    for (const t in filters) {
+
+                        if( typeof filters[t] != 'function' ) {
+
+                            r = filters[t].match(er);
+                            if ( r !== null ) {
+                                arf = r['input'].split('=');
+                            }
+                            
+                        }
+                    }
+
+                    if( arf != null ) {
+                                    
+                        var arrAcentos      = arf[1].split(','),
+                            arrSinAcentos   = Beziercode.normalize( arf[1] ).split(',');
+
+                        obj[i] = [];
+
+                        for( var e=0, j = arrAcentos.length; e < j; e++  ) {
+
+                            obj[i][e] = {
+                                title   : arrAcentos[e],
+                                filtro  : arrSinAcentos[e].toLowerCase()
+                            }                                    
+                        }
+                        
+                    }
+
+                    var filtroFinal     = [],
+                        arrAcentos      = [],
+                        arrSinAcentos   = [],
+                        c=0;
+                    
+                    for( var i in obj ) {
+
+                        for( var e in obj[i] ) {
+                            
+                            if( typeof obj[i][e].title != 'undefined' ) {
+                                arrAcentos[c]    = obj[i][e].title;
+                                arrSinAcentos[c] = obj[i][e].filtro;
+                                c++;
+                            }
+                            
+                        }
+                        
+                    }
+                    
+                    var arrAcentosUnique        = arrAcentos.unique(),
+                        arrSinAcentosUnique     = arrSinAcentos.unique();
+                    
+                    for( var i in arrAcentosUnique ) {
+                        
+                        if( i != 'unique' ) {
+                            filtroFinal[i] = {
+                                title   : arrAcentosUnique[i],
+                                filtro  : arrSinAcentosUnique[i]
+                            }
+                        }
+                        
+                    }
+                    
+                    return filtroFinal;
+
+                });
+            },
+            /* Crea una template de los botones de filtrado */
+            templateBtnFilter   : function( arrFilter ) {
+                
+                var output = '<li data-filter="*" class="activo">Todo</li>';
+                
+                if( arrFilter != '' ) {
+                    for( var i in arrFilter ) {
+                        
+                        if( 
+                            arrFilter[i].filtro != '' &&
+                            typeof arrFilter[i] != 'undefined' &&
+                            typeof arrFilter[i] != 'function'
+                        ) {
+                            output += '<li data-filter="'+arrFilter[i].filtro+'">'+arrFilter[i].title.capitalize()+'</li>';
+                        }
+                        
+                    }
+                }
+                
+                return output;
+                
+            },
 
         }
 
@@ -156,3 +291,16 @@
     window.Beziercode = window.$bc = Beziercode;
 
 });
+
+
+Array.prototype.unique = function(a) {
+    return function() {
+        return this.filter(a);
+    }
+}(function(a,b,c){
+    return c.indexOf(a,b+1)<0
+});
+
+String.prototype.capitalize = function(a) {
+    return this.charAt(0).toUpperCase() + this.slice(1);
+}
