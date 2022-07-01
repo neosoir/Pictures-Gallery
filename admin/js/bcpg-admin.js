@@ -392,8 +392,6 @@
             dataValue   = $li.attr('data-value'),
             filters     = dataValue.split(';');
 
-            console.log(src);
-
         var er      = /filters/,
             r       = null,
             arf     = null;
@@ -516,7 +514,8 @@
 
             $('ul.bcpg-ul').find('li').remove();
             var filtersArr = Beziercode.analizadorFiltros('.bcpg-container li');
-            $('ul.bcpg-ul').append( Beziercode.templateBtnFilter( filtersArr ) );
+            var some = "<li>Hola</li>"
+            $('ul.bcpg-ul').append( Beziercode.templateBtnFilter( some ) );
 
         }
 
