@@ -514,7 +514,6 @@
 
             $('ul.bcpg-ul').find('li').remove();
             var filtersArr = Beziercode.analizadorFiltros('.bcpg-container li');
-            var some = "<li>Hola</li>"
             $('ul.bcpg-ul').append( Beziercode.templateBtnFilter( some ) );
 
         }
