@@ -281,6 +281,17 @@
                 return output;
                 
             },
+            addTitleItem        : function( titulo ) {
+
+                var template = `
+                    <div class="title-item">
+                        <h5>${ titulo }</h5>
+                    </div>
+                `;
+
+                return template;
+                
+            },
 
         }
 

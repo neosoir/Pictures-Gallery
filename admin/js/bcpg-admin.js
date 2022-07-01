@@ -503,8 +503,8 @@
 
         else {
             if ( title !== '' ) {
-                //var output = addTitleItem(title);
-                $item.find('.bcpg-masc').before(title);
+                var output = Beziercode.addTitleItem(title);
+                $item.find('.bcpg-masc').before(output);
             }
         }
 
@@ -521,6 +521,8 @@
 
 
     });
+
+    $('.bcpg-container').sortable();
 
 
 })( jQuery );
