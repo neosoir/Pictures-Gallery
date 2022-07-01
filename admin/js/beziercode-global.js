@@ -119,7 +119,12 @@
                         id  = arrItems[i].id;
 
                     template += `
-                        <li class="col ${ classCol } bcpg-item" data-f="" data-id="${id}">
+                        <li class="col ${ classCol } 
+                            bcpg-item" data-f="" 
+                            data-id="${ id }"
+                            data-src="${ url }"
+                            data-value="media='${ url }';id='${ id }'"
+                        >
 
                             <div class="bcpg-box">
                                 <div class="edit-item">

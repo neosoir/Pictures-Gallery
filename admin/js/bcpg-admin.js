@@ -232,11 +232,14 @@
 
     });
 
+    /**
+     * Select img of wordpress.
+     */
     var $addItems = $('#addItems'),
         marco;
 
     $addItems.on('click', function() {
-        console.log('hola')
+        
         if (marco) {
             marco.open();
             return;
@@ -268,15 +271,15 @@
 
     });
 
-    // Change the img depending th columns
+    /**
+     *  Change the img depending th columns.
+     */ 
     $('#columnas').on('change', function (params) {
         
         var $this       = $(this),
             valor       = parseInt( $this.val() ),
             $items      = $('.bcpg-item'),
             $itemsCat   = $('.bcpg-carditem');
-
-
 
         if ( $items.length ) {
 
@@ -371,6 +374,123 @@
 
 
     });
+
+    /**
+     * Edit img of edit page.
+     */
+    $(document).on('click','.edit-item', function () {
+        
+        $('#bpcg-item-edit').modal('open');
+
+        var $li         = $(this).parents('li'),
+            id          = $li.attr('data-id'),
+            title       = $li.attr('data-title'),
+            src         = $li.attr('data-src'),
+            dataValue   = $li.attr('data-value'),
+            filters     = dataValue.split(';');
+
+            console.log(src);
+
+        var er      = /filters/,
+            r       = null,
+            arf     = null;
+
+        $('#edit-item-id').val(id);
+        $('#edit-item-title').val(title);
+        $('#edit-item-img').attr({
+            'src'       : src,
+            'data-id'   : id
+
+        });
+
+    });
+
+    /**
+     * Change the img of item.
+     */
+    var $changeImgItem = $('#change-img-item'),
+        mediaSingle;
+
+    $changeImgItem.on('click', function () {
+
+        if ( mediaSingle ) {
+            mediaSingle.open();
+            return;
+        }
+
+        mediaSingle = wp.media({
+            title   : 'Selecciona la imagen a cambiar',
+            button  : {
+                text    : 'Usar esta imagen'
+            },
+            multiple: false
+        });
+
+        mediaSingle.on('select', function() {
+            var adjunto = mediaSingle.state().get('selection').first().toJSON(),
+                url     = adjunto.url;
+
+            $('#edit-item-img').attr( {
+                'src'       : url,
+                'data-id'   : adjunto.id
+            });
+        });
+
+        mediaSingle.open();
+
+    });
+
+    /**
+     * Update item.
+     */
+    $('#update-item').on('click', function() {
+
+        var id          = $('#edit-item-id').val(),
+            title       = $('#edit-item-title').val(),
+            src         = $('#edit-item-img').attr('src'),
+            filters     = $('#edit-item-filters').val();
+            
+        var $item = $('[data-id="'+ id +'"]');
+        $item.find('img').attr( 'src', src );
+        var idN     = $('#edit-item-img').attr('data-id');
+
+        var valsUpdated = [
+            'media='+src,
+            'title='+title,
+            'filters='+filters,
+            'id='+idN
+        ];
+
+        $item.attr({
+            'data-value'    :   valsUpdated.join(';'),
+            'data-title'    :   title,
+            'data-src'      :   src,
+            'data-f'        :   filters,
+            'data-id'       :   idN
+        });
+
+        var $titleItem = $item.find('.title-item h5');
+
+        if ( $titleItem.length ) {
+
+            if ( title !== '' ) {
+                $titleItem.text(title);
+            }
+            else {
+                $('.title-item').remove();
+            }
+            
+        }
+        else {
+            if ( title !== '' ) {
+                //var output = addTitleItem(title);
+                $item.find('.bcpg-masc').before(title);
+            }
+        }
+
+
+    });
+
 
 })( jQuery );
 
