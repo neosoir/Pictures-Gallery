@@ -264,6 +264,8 @@
 
         });
 
+        marco.open();
+
     });
 
     // Change the img depending th columns
