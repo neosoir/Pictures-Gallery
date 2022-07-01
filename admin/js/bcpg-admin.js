@@ -345,15 +345,15 @@
                         switch ( valor ) {
                             
                             case 2:
-                                $items.addClass('m6');
+                                $itemsCat.addClass('m6');
                                 break;
                                 
                             case 3:
-                                $items.addClass('m4');
+                                $itemsCat.addClass('m4');
                                 break;
     
                             case 4:
-                                $items.addClass('m3');
+                                $itemsCat.addClass('m3');
                                 break;
                     
                         }
