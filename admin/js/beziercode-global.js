@@ -198,7 +198,7 @@
                         if( typeof filters[t] != 'function' ) {
 
                             r = filters[t].match(er);
-                            if ( r !== null ) {
+                            if ( r != null ) {
                                 arf = r['input'].split('=');
                             }
                             
@@ -222,42 +222,42 @@
                         
                     }
 
-                    var filtroFinal     = [],
-                        arrAcentos      = [],
-                        arrSinAcentos   = [],
-                        c=0;
-                    
-                    for( var i in obj ) {
-
-                        for( var e in obj[i] ) {
-                            
-                            if( typeof obj[i][e].title != 'undefined' ) {
-                                arrAcentos[c]    = obj[i][e].title;
-                                arrSinAcentos[c] = obj[i][e].filtro;
-                                c++;
-                            }
-                            
-                        }
-                        
-                    }
-                    
-                    var arrAcentosUnique        = arrAcentos.unique(),
-                        arrSinAcentosUnique     = arrSinAcentos.unique();
-                    
-                    for( var i in arrAcentosUnique ) {
-                        
-                        if( i != 'unique' ) {
-                            filtroFinal[i] = {
-                                title   : arrAcentosUnique[i],
-                                filtro  : arrSinAcentosUnique[i]
-                            }
-                        }
-                        
-                    }
-                    
-                    return filtroFinal;
-
                 });
+
+                var filtroFinal     = [],
+                    arrAcentos      = [],
+                    arrSinAcentos   = [],
+                    c=0;
+                
+                for( var i in obj ) {
+
+                    for( var e in obj[i] ) {
+                        
+                        if( typeof obj[i][e].title != 'undefined' ) {
+                            arrAcentos[c]    = obj[i][e].title;
+                            arrSinAcentos[c] = obj[i][e].filtro;
+                            c++;
+                        }
+                        
+                    }
+                    
+                }
+                
+                var arrAcentosUnique        = arrAcentos.unique(),
+                    arrSinAcentosUnique     = arrSinAcentos.unique();
+                
+                for( var i in arrAcentosUnique ) {
+                    
+                    if( i != 'unique' ) {
+                        filtroFinal[i] = {
+                            title   : arrAcentosUnique[i],
+                            filtro  : arrSinAcentosUnique[i]
+                        }
+                    }
+                    
+                }
+                
+                return filtroFinal;
             },
             /* Crea una template de los botones de filtrado */
             templateBtnFilter   : function( arrFilter ) {

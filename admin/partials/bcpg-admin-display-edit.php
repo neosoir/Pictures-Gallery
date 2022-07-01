@@ -167,25 +167,6 @@ $settings   = $data['settings'];
                                      
                                      <ul class="bcpg-container">
 
-                                        <div class='title-item'>
-                                            <h5>$title</h5>
-                                        </div>
-
-                                        <li class='col $column bcpg-item' data-f='$filters2' data-id='$id' data-src='$media' data-value='media=$media;title=$title;filters=$filters;id=$id'>
-                                            <div class='bcpg-box'>
-                                                <div class='edit-item'>
-                                                    <i class='material-icons'>edit</i>
-                                                </div>
-                                                $title_output
-                                                <div class='remove-item'>
-                                                    <i class='material-icons'>close</i>
-                                                </div>
-                                                <div class='bcpg-masc'>
-                                                    <i class='material-icons bcpg_img'>zoom_in</i>
-                                                </div>
-                                                <img src='$media' alt='$title'>
-                                            </div>
-                                        </li>
                                         
                                      </ul>
                                      
