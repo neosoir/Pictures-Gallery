@@ -118,6 +118,12 @@ class BCPG_Master {
          * y caracteres especales
 		 */
         require_once BCPG_PLUGIN_DIR_PATH . 'includes/class-bcpg-normalize.php';
+
+		/**
+		 * La clase responsable de aportar ayuda con
+         * algunas tareas tediosas
+		 */
+        require_once BCPG_PLUGIN_DIR_PATH . 'includes/class-bcpg-helpers.php';
         
         /**
 		 * La clase responsable de definir todas las acciones en el

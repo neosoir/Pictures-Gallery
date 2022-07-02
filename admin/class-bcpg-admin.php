@@ -77,6 +77,15 @@ class BCPG_Admin {
 	 * @var      object    $normalize Instancia del objeto BCPG_Normalize
 	 */
     private $normalize;
+
+    /**
+	 * Objeto BCPG_Helpers
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $helpers Instancia del objeto BCPG_Helpers
+	 */
+    private $helpers;
     
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
@@ -88,6 +97,7 @@ class BCPG_Admin {
         $this->version          = $version;
         $this->build_menupage   = new BCPG_Build_Menupage();
         $this->normalize        = new BCPG_Normalize;
+        $this->helpers          = new BCPG_Helpers;
         global $wpdb;
         $this->db = $wpdb;
         
