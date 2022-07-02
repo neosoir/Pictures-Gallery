@@ -8,12 +8,11 @@ $data       = json_decode( $resultado[0]->data, true );
 $items      = $data['items'];
 $settings   = $data['settings'];
 
-
-
 ?>
 
 <!-- Estructura Modal para la edición de items -->
 <div id="bpcg-item-edit" class="modal">
+
     <div class="modal-content">
         
         <div class="modal-header">
@@ -93,7 +92,7 @@ $settings   = $data['settings'];
 <!-- Estructure of edit page -->
 <div class="had-container">
       
-      <div class="row">
+        <div class="row">
 
             <div class="col s12">
                 <div class="logo-bcpg">
@@ -102,12 +101,12 @@ $settings   = $data['settings'];
                     <span><?= esc_html_e('Portafolio Galería', 'bcpg_textdomain') ?></span>
                 </div>
             </div>
-          
-          <div class="col s12">
+            
+            <div class="col s12">
                 <div class="divider"></div>
-          </div>
-          
-      </div>
+            </div>
+            
+        </div>
       
       <div class="row">
           
@@ -123,8 +122,7 @@ $settings   = $data['settings'];
                 </div>
 
                 <div class="col m4">
-                    
-
+                
                     <select id="type">
                         <option value="" disabled selected>Selecciona el tipo</option>
                         <option value="custom"   <?= selected( $resultado[0]->tipo, 'custom' ) ?>>Personalizada</option>
