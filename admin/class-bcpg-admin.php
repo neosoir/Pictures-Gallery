@@ -384,6 +384,7 @@ class BCPG_Admin {
             
             extract( $_POST, EXTR_OVERWRITE );
             
+            // clean / of data
             $data = stripslashes( $data );
             
             $columns = [

@@ -546,43 +546,62 @@
                 }
             },
             data = $.extend( {}, bcpgMaster, objetoItem, conf );
-         
-            $.ajax({
-                url         : bcpg.url,
-                type        : 'POST',
-                dataType    : 'json',
-                data : {
-                    action          : 'bcpg_data',
-                    nonce           : bcpg.seguridad,
-                    idgalbcpg       : idgalbcpg,
-                    nombregalbcpg   : nombregalbcpg,
-                    type            : type,
-                    data            : JSON.stringify( data )
-                }, 
-                success      : function( data ) {
+        
+        $.ajax({
+            url         : bcpg.url,
+            type        : 'POST',
+            dataType    : 'json',
+            data : {
+                action          : 'bcpg_data',
+                nonce           : bcpg.seguridad,
+                idgalbcpg       : idgalbcpg,
+                nombregalbcpg   : nombregalbcpg,
+                type            : type,
+                data            : JSON.stringify( data )
+            }, 
+            success      : function( data ) {
+                
+                if( data.result ) {
                     
-                    if( data.result ) {
-                        
-                        swal({
-                            title   :   'Guardar!',
-                            text    :   'La informacion se ha guardado con exito',
-                            type    :   'success',
-                            tiner   :   15000
-                        });
-                        
-                    }
-                    
-                }, 
-                error: function( d,x,v ) {
-                    
-                    console.log(d);
-                    console.log(x);
-                    console.log(v);
+                    swal({
+                        title   :   'Guardar!',
+                        text    :   'La informacion se ha guardado con exito',
+                        type    :   'success',
+                        tiner   :   15000
+                    });
                     
                 }
-            });
-        
+                
+            }, 
+            error: function( d,x,v ) {
+                
+                console.log(d);
+                console.log(x);
+                console.log(v);
+                
+            }
+        });
+
     });
+
+    /**
+     * Remove items.
+     */
+    $(document).on('click', '.remove-item', function () {
+        
+        $(this).parents('li').remove();
+        $('ul.bcpg-ul').find('li').remove();
+
+        if ( $('.bcpg-container li').length ) {
+            var filtersArr = Beziercode.analizadorFiltros( '.bcpg-container li')
+        }
+        else {
+            var filtersArr = '';
+        }
+
+        $('ul.bcpg-ul').append( Beziercode.templateBtnFilter( filtersArr ) );
+
+    })
 
 })( jQuery );
 

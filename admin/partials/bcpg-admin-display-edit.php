@@ -308,12 +308,9 @@ $settings   = $data['settings'];
                                 </div>
                                 
                                 <?php 
-                                if( $resultado[0]->data != '' )  $selected = '';
-
-                                else $selected = 'selected';
-                                
+                                // correct value in colums
+                                $resultado[0]->data != '' ? $selected = '' : $selected = 'selected';
                                 if( ! isset($val_columns) ) $val_columns = '';
-                                
                                 ?>
                                 
                                 <!-- Columnas -->
