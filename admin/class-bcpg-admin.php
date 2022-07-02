@@ -68,6 +68,15 @@ class BCPG_Admin {
 	 * @var      object    $crud_json Instancia del objeto BCPG_CRUD_JSON
 	 */
     private $crud_json;
+
+    /**
+	 * Objeto BCPG_Normalize
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $normalize Instancia del objeto BCPG_Normalize
+	 */
+    private $normalize;
     
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
@@ -75,10 +84,10 @@ class BCPG_Admin {
      */
     public function __construct( $plugin_name, $version ) {
         
-        $this->plugin_name = $plugin_name;
-        $this->version = $version;
-        $this->build_menupage = new BCPG_Build_Menupage();
-        
+        $this->plugin_name      = $plugin_name;
+        $this->version          = $version;
+        $this->build_menupage   = new BCPG_Build_Menupage();
+        $this->normalize        = new BCPG_Normalize;
         global $wpdb;
         $this->db = $wpdb;
         

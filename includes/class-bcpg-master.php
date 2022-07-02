@@ -112,6 +112,12 @@ class BCPG_Master {
          * en el área de administración
 		 */
         require_once BCPG_PLUGIN_DIR_PATH . 'includes/class-bcpg-build-menupage.php';
+
+		/**
+		 * La clase responsable de normalizar acentos, eñes,
+         * y caracteres especales
+		 */
+        require_once BCPG_PLUGIN_DIR_PATH . 'includes/class-bcpg-normalize.php';
         
         /**
 		 * La clase responsable de definir todas las acciones en el
