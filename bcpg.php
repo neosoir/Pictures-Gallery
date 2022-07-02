@@ -11,8 +11,8 @@
  * @package             BCPortfolioGallery
  *
  * @wordpress-plugin
- * Plugin Name:         Beziercode Portfolio Gallery
- * Plugin URI:          https://beziercode.com.co
+ * Plugin Name:         Portfolio Gallery
+ * Plugin URI:          https://neoslab.online
  * Description:         Crea una galería tipo portafolio y también toma valores de publicaciones a msotrar
  * Version:             1.0.0
  * Author:              Neos Lab
