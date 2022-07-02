@@ -8,6 +8,8 @@ $data       = json_decode( $resultado[0]->data, true );
 $items      = $data['items'];
 $settings   = $data['settings'];
 
+
+
 ?>
 
 <!-- Estructura Modal para la edición de items -->
@@ -17,7 +19,7 @@ $settings   = $data['settings'];
         <div class="modal-header">
             <div class="row mb0">
                 <div class="col s8">
-                    <h5><?php _e('Editar item', 'bcpg-textdomain'); ?></h5>
+                    <h5><?= _e('Editar item', 'bcpg-textdomain') ?></h5>
                 </div>
             </div>
         </div>
@@ -33,7 +35,7 @@ $settings   = $data['settings'];
             
             <div class="row mb0">
                 <div class="col m4">
-                    <p><?php _e('Imagen', 'bcpg-textdomain'); ?>:</p>                    
+                    <p><?= _e('Imagen', 'bcpg-textdomain') ?>:</p>                    
                 </div>
                 <div class="col m4">
                     <button type="button" id="change-img-item" class="btn-bcpg bcpg-bg-azul">
@@ -56,7 +58,7 @@ $settings   = $data['settings'];
             <div class="row mb0">
                
                <div class="col m4">
-                   <h6><?php _e('Título', 'bcpg-textdomain'); ?>:</h6>
+                   <h6><?= _e('Título', 'bcpg-textdomain') ?>:</h6>
                </div>
                <div class="bcpg-input col m7">
                    <input id="edit-item-title" type="text" placeholder="Título">
@@ -68,7 +70,7 @@ $settings   = $data['settings'];
             <div class="row mb0">
                
                <div class="col m4">
-                   <h6><?php _e('Filtros', 'bcpg-textdomain'); ?>:</h6>
+                   <h6><?= _e('Filtros', 'bcpg-textdomain') ?>:</h6>
                </div>
                <div class="bcpg-input col m7">
                    <input id="edit-item-filters" type="text" placeholder="Ej: diseño,operación">
@@ -92,11 +94,12 @@ $settings   = $data['settings'];
 <div class="had-container">
       
       <div class="row">
+
             <div class="col s12">
                 <div class="logo-bcpg">
-                    <img src="<?php echo BCPG_PLUGIN_DIR_URL; ?>admin/img/core-50.svg" alt="">
+                    <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core-50.svg" alt="">
                     <span class="border-v v-31"></span>
-                    <span><?php esc_html_e('Portafolio Galería', 'bcpg_textdomain'); ?></span>
+                    <span><?= esc_html_e('Portafolio Galería', 'bcpg_textdomain') ?></span>
                 </div>
             </div>
           
@@ -116,16 +119,18 @@ $settings   = $data['settings'];
                 <input id="idgalbcpg" type="hidden" value="<?= $id ?>">
             
                 <div class="bcpg-input col m4">
-                    <input id="nombregalbcpg" type="text" class="" value="<?php echo $resultado[0]->nombre ?>">
+                    <input id="nombregalbcpg" type="text" class="" value="<?= $resultado[0]->nombre ?>">
                 </div>
 
                 <div class="col m4">
-                    <select id="type">
                     
+
+                    <select id="type">
                         <option value="" disabled selected>Selecciona el tipo</option>
-                        <option value="custom" <?php selected( $resultado[0]->tipo, 'custom' ) ?>>Personalizada</option>
-                        <option value="category" <?php selected( $resultado[0]->tipo, 'category' ) ?>>Categoría</option>
+                        <option value="custom"   <?= selected( $resultado[0]->tipo, 'custom' ) ?>>Personalizada</option>
+                        <option value="category" <?= selected( $resultado[0]->tipo, 'category' ) ?>>Categoría</option>
                     </select>
+
                 </div>
                 
                 <div class="col s12">
@@ -146,14 +151,8 @@ $settings   = $data['settings'];
                                 <div class="row mb0">
                                     <div class="col s12">
                                         <ul class="bcpg-ul">
-                                            <li data-filter="*" class="activo"><?php _e('Todo', 'bcpg-textdomain'); ?></li>
-                                            <?php
-                                            
-                                            if( $resultado[0]->data != '' ) {
-                                                echo $this->helpers->add_btn_filters( $items );
-                                            }
-                                            
-                                            ?>
+                                            <li data-filter="*" class="activo"><?= _e('Todo', 'bcpg-textdomain'); ?></li>
+                                            <?php if( $resultado[0]->data != '' ) echo $this->helpers->add_btn_filters( $items ); ?>
                                         </ul>
                                     </div>
                                 </div>
@@ -161,7 +160,10 @@ $settings   = $data['settings'];
                                 <!-- Botón agregar items -->
                                 <div class="row">
                                     <div class="col s12">
-                                        <button type="button" id="addItems" class="btn-bcpg bcpg-bg-azul"><?php _e('Agregar items', 'bcpg-textdomain'); ?> <i class="material-icons">add</i></button>
+                                        <button type="button" id="addItems" class="btn-bcpg bcpg-bg-azul">
+                                            <?= _e('Agregar items', 'bcpg-textdomain') ?> 
+                                            <i class="material-icons">add</i>
+                                        </button>
                                     </div>
                                 </div>
                                 
@@ -254,7 +256,7 @@ $settings   = $data['settings'];
                             <section id="category">
                             
                                 <div class="loaderengine">
-                                    <img src="<?php echo BCPG_PLUGIN_DIR_URL . '/admin/img/loader.gif'; ?>" alt="">
+                                    <img src="<?= BCPG_PLUGIN_DIR_URL . '/admin/img/loader.gif' ?>" alt="">
                                 </div>
                                     
                                 <div class="categoryTemplate">
@@ -301,25 +303,18 @@ $settings   = $data['settings'];
                                 <div class="row">
                                     
                                     <div class="col s12">
-                                        <h5><?php echo _e( 'Ajustes', 'bcpg-textdomain' ); ?></h5>
+                                        <h5><?= _e( 'Ajustes', 'bcpg-textdomain' ) ?></h5>
                                         <div class="divider"></div>
                                     </div>
                                     
                                 </div>
                                 
-                                <?php
+                                <?php 
+                                if( $resultado[0]->data != '' )  $selected = '';
+
+                                else $selected = 'selected';
                                 
-                                if( $resultado[0]->data != '' ) {
-                                    $selected = '';
-                                } 
-                                
-                                else {
-                                    $selected = 'selected';
-                                }
-                                
-                                if( ! isset($val_columns) ) {
-                                    $val_columns = '';
-                                }
+                                if( ! isset($val_columns) ) $val_columns = '';
                                 
                                 ?>
                                 
@@ -329,9 +324,9 @@ $settings   = $data['settings'];
                                         <label for="columnas">Columnas</label>
                                         <select id="columnas">
                                             <option value="" disabled>Seleciona las columnas</option>
-                                            <option value="2" <?php selected( $val_columns, 2 ) ?>>2</option>
-                                            <option value="3" <?php echo $selected; selected( $val_columns, 3 ) ?>>3</option>
-                                            <option value="4" <?php selected( $val_columns, 4 ) ?>>4</option>
+                                            <option value="2" <?= selected( $val_columns, 2 ) ?>>2</option>
+                                            <option value="3" <?= $selected; selected( $val_columns, 3 ) ?>>3</option>
+                                            <option value="4" <?= selected( $val_columns, 4 ) ?>>4</option>
                                         </select>
                                     </div>
                                 </div>
@@ -356,11 +351,8 @@ $settings   = $data['settings'];
                                                                                             
                                                 $categories = get_categories( $args );
 
-                                                foreach( $categories as $category ){
-
+                                                foreach( $categories as $category )
                                                     echo "<option value='{$category->cat_ID}'" . selected( $settings['category'], $category->cat_ID ) . " > ". ucfirst( $category->name ) ." </option>";
-
-                                                }
 
                                                 ?>
                                                     
@@ -373,7 +365,7 @@ $settings   = $data['settings'];
                                             
                                             <div class="bcpg-input col s12">
                                                 <label for="limite"></label>
-                                                <input type="text" id="limite" value="<?php echo isset( $postPerPage ) && $postPerPage != '' ? $postPerPage : '-1'; ?>" disabled>
+                                                <input type="text" id="limite" value="<?= isset( $postPerPage ) && $postPerPage != '' ? $postPerPage : '-1'; ?>" disabled>
                                             </div>
                                             
                                         </div>
@@ -384,8 +376,8 @@ $settings   = $data['settings'];
                                             <label for="orden">Orden</label>
                                             <select id="orden" disabled>
                                                 <option value="" disabled>Selecciona orden</option>
-                                                <option value="desc" <?php echo $selected; selected( $order, 'desc' ) ?>>Descendente</option>
-                                                <option value="asc" <?php selected( $order, 'asc' ) ?>>Ascendente</option>
+                                                <option value="desc" <?= $selected; selected( $order, 'desc' ) ?>>Descendente</option>
+                                                <option value="asc" <?= selected( $order, 'asc' ) ?>>Ascendente</option>
                                             </select>
                                             
                                         </div>
@@ -396,11 +388,11 @@ $settings   = $data['settings'];
                                             <label for="orderby">Ordenar por</label>
                                             <select id="orderby" disabled>
                                                 <option value="" disabled>Selecciona el orden por</option>
-                                                <option value="date" <?php echo $selected; selected( $orderby, 'date' ); ?>>Fecha</option>
-                                                <option value="author" <?php selected( $orderby, 'author' ); ?>>Autor</option>
-                                                <option value="title" <?php selected( $orderby, 'title' ); ?>>Título</option>
-                                                <option value="name" <?php selected( $orderby, 'name' ); ?>>Nombre (slug)</option>
-                                                <option value="rand" <?php selected( $orderby, 'rand' ); ?>>Aleatorio</option>
+                                                <option value="date"    <?= $selected; selected( $orderby, 'date' ) ?>>Fecha</option>
+                                                <option value="author"  <?= selected( $orderby, 'author' ) ?>>Autor</option>
+                                                <option value="title"   <?= selected( $orderby, 'title' ) ?>>Título</option>
+                                                <option value="name"    <?= selected( $orderby, 'name' ) ?>>Nombre (slug)</option>
+                                                <option value="rand"    <?= selected( $orderby, 'rand' ) ?>>Aleatorio</option>
                                             </select>
                                             
                                         </div>
@@ -427,8 +419,13 @@ $settings   = $data['settings'];
           
     </div>
     
-    <button type="button" id="guardar-items" class="btn-bcpg bcpg-bg-verde"><?php _e( 'Guardar', 'bcpg-textdomain' ); ?> <i class="material-icons">save</i> </button>
-    <a href="?page=bcpg" id="cancelar" class="btn-bcpg bcpg-bg-azulC"><?php _e( 'Cancelar', 'bcpg-textdomain' ); ?> <i class="material-icons">close</i> </a>
+    <button type="button" id="guardar-items" class="btn-bcpg bcpg-bg-verde">
+        <?= _e( 'Guardar', 'bcpg-textdomain' ) ?> 
+        <i class="material-icons">save</i> 
+    </button>
+    <a href="?page=bcpg" id="cancelar" class="btn-bcpg bcpg-bg-azulC">
+        <?= _e( 'Cancelar', 'bcpg-textdomain' ) ?> <i class="material-icons">close</i> 
+    </a>
     
 </div>
 
