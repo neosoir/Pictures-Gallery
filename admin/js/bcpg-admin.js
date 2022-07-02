@@ -581,8 +581,6 @@
                     
                 }
             });
-
-            console.log(data);
         
     });
 

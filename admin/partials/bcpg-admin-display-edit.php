@@ -165,10 +165,68 @@ $settings   = $data['settings'];
                                  <!-- Contenido de los items -->
                                  <div id="content_gallery" class="row">
                                      
-                                     <ul class="bcpg-container">
+                                    <ul class="bcpg-container">
 
-                                        
-                                     </ul>
+                                     <?php
+                                         
+                                         if( $resultado[0]->data != '' ) {
+                                             
+                                             $output        = '';
+                                             $val_columns   = $settings['columns'];
+                                             
+                                             switch( $val_columns ) {
+                                                 case 2:
+                                                     $column = 'm6';
+                                                     break;
+                                                 case 3:
+                                                     $column = 'm4';
+                                                     break;
+                                                 case 4:
+                                                     $column = 'm3';
+                                                     break;
+                                                 
+                                             }
+                                             
+                                             foreach( $items as $item ){
+                                                 
+                                                 $media     = $item['media'];
+                                                 $title     = $item['title'];
+                                                 $filters   = $item['filters'];
+                                                 $filters2  = $this->normalize->init( $item['filters'] );
+                                                 $id        = $item['id'];
+                                                 
+                                                 if( $title != '' ) {
+                                                     $title_output = "<div class='title-item'>
+                                                                        <h5>$title</h5>
+                                                                       </div>";
+                                                 } else {
+                                                     $title_output = '';
+                                                 }
+                                                 
+                                                 $output .= "<li class='col $column bcpg-item' data-f='$filters2' data-id='$id' data-src='$media' data-value='media=$media;title=$title;filters=$filters;id=$id'>
+                                                                <div class='bcpg-box'>
+                                                                   <div class='edit-item'>
+                                                                       <i class='material-icons'>edit</i>
+                                                                   </div>
+                                                                   $title_output
+                                                                   <div class='remove-item'>
+                                                                       <i class='material-icons'>close</i>
+                                                                   </div>
+                                                                    <div class='bcpg-masc'>
+                                                                        <i class='material-icons bcpg_img'>zoom_in</i>
+                                                                    </div>
+                                                                    <img src='$media' alt='$title'>
+                                                                </div>
+                                                            </li>";
+                                                 
+                                             }
+                                             
+                                             echo $output;
+                                             
+                                         }
+                                         
+                                     ?>
+                                    </ul>
                                      
                                  </div>
                                  
