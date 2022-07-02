@@ -292,7 +292,68 @@
                 return template;
                 
             },
-
+            /**
+             * Convierte el array de items
+             * en un objeto ordenado
+             */
+             toObject                        : function( arrItems ) {
+                
+                var obj = {
+                    items : []
+                };
+                
+                for( var i in arrItems ) {
+                    
+                    if(
+                        typeof arrItems[i] != 'undefined' &&
+                        typeof arrItems[i] != 'function'
+                    ) {
+                        
+                        var arrItem = arrItems[i].split(';')
+//                        console.log( arrItem );
+                        obj.items[i] = {
+                            media       : '',
+                            title       : '',
+                            filters     : '',
+                            id          : ''
+                        };
+                        
+                        for( var e in arrItem ) {
+                            
+                            if(
+                                typeof arrItem[e] != 'undefined' &&
+                                typeof arrItem[e] != 'function'
+                            ) {
+                                
+                                var item = arrItem[e].split('=');
+                                
+                                switch( item[0] ) {
+                                    case 'media':
+                                        obj.items[i].media = item[1];
+                                        break;
+                                    case 'title':
+                                        obj.items[i].title = item[1];
+                                        break;
+                                    case 'filters':
+                                        obj.items[i].filters = item[1];
+                                        break;
+                                    case 'id':
+                                        obj.items[i].id = item[1];
+                                        break;
+                                }
+                                
+                            }
+                            
+                        }
+                        
+                        
+                    }
+                    
+                }
+                
+                return obj;
+                
+            },
         }
 
         return core;

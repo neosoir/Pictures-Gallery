@@ -524,6 +524,67 @@
 
     $('.bcpg-container').sortable();
 
+    /**
+     * Save data in database by ajax in json format
+     */
+    $('#guardar-items').on('click', function() {
+
+        var dataValueItems  = $('.bcpg-container').sortable( 'toArray', {attribute:'data-value'} ),
+            objetoItem      = Beziercode.toObject( dataValueItems ),
+            idgalbcpg       = $('#idgalbcpg').val(),
+            nombregalbcpg   = $('#nombregalbcpg').val(),
+            type            = $('#type').val(),
+            columnas        = $('#columnas').val(),
+            bcpgMaster      = {
+                bcpg        : {
+                    name    :   nombregalbcpg,
+                },
+            },
+            conf            = {
+                settings    : {
+                    columns :   columnas
+                }
+            },
+            data = $.extend( {}, bcpgMaster, objetoItem, conf );
+         
+            $.ajax({
+                url         : bcpg.url,
+                type        : 'POST',
+                dataType    : 'json',
+                data : {
+                    action          : 'bcpg_data',
+                    nonce           : bcpg.seguridad,
+                    idgalbcpg       : idgalbcpg,
+                    nombregalbcpg   : nombregalbcpg,
+                    type            : type,
+                    data            : JSON.stringify( data )
+                }, 
+                success      : function( data ) {
+                    
+                    if( data.result ) {
+                        
+                        swal({
+                            title   :   'Guardar!',
+                            text    :   'La informacion se ha guardado con exito',
+                            type    :   'success',
+                            tiner   :   15000
+                        });
+                        
+                    }
+                    
+                }, 
+                error: function( d,x,v ) {
+                    
+                    console.log(d);
+                    console.log(x);
+                    console.log(v);
+                    
+                }
+            });
+
+            console.log(data);
+        
+    });
 
 })( jQuery );
 
