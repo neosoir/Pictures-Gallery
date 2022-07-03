@@ -388,7 +388,6 @@
                     `;
                 
                 }
-                console.log(template)
                 return template;
                 
             }

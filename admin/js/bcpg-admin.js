@@ -535,6 +535,12 @@
             nombregalbcpg   = $('#nombregalbcpg').val(),
             type            = $('#type').val(),
             columnas        = $('#columnas').val(),
+            // Valores para las categorias.
+            category        = $('#categorias').val(),
+            postPerPage     = $('#limite').val(),
+            order           = $('#orden').val(),
+            orderby         = $('#orderby').val(),
+
             bcpgMaster      = {
                 bcpg        : {
                     name    :   nombregalbcpg,
@@ -542,7 +548,11 @@
             },
             conf            = {
                 settings    : {
-                    columns :   columnas
+                    columns     : columnas,
+                    category    : category,
+                    postPerPage : postPerPage,
+                    order       : order,
+                    orderby     : orderby
                 }
             },
             data = $.extend( {}, bcpgMaster, objetoItem, conf );
@@ -675,7 +685,7 @@
                 //if( data.result ) {
                     
                     $loaderengine.css('display', 'none');
-                    console.log( data.posts )
+
                     $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) )
 
                 //}
