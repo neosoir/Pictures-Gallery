@@ -640,12 +640,13 @@
 
     }
 
+    // Categories.
     $categorias.on('change', function () {
 
         var catValue        = $(this).val(),
             postPerPage     = $limite.val(),
             orden           = $orden.val(),
-            orderby        = $orderby.val();
+            orderby         = $orderby.val();
             
 
         if ( ( catValue !== null ) && ( ! isNaN( catValue ) ) ) {

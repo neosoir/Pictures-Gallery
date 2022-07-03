@@ -357,6 +357,7 @@
                 var template = '',
                     col      = parseInt($('#columnas').val()),
                     classCol = '';
+
                 
                 switch( col ) {
                     case 2:
@@ -373,7 +374,7 @@
                 for( var i=0, p=posts.length; i<p; i++) {
                     
                     template += `
-                        <div class="bcpg-carditem col s12 '${ classCol }">
+                        <div class="bcpg-carditem col s12 ${ classCol }">
                             <div class="card">
                                 <div class="card-image">
                                     <img src="${ posts[i].imgurl }">
