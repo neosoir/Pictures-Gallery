@@ -82,6 +82,22 @@ class BCPG_Public {
          * entre los ganchos definidos y las funciones definidas en este
          * clase.
 		 */
+
+        /**
+         * Framework Materializecss
+         * http://materializecss.com/getting-started.html
+         * Material Icons Google
+         * https://material.io/icons/
+         */
+		wp_enqueue_style( 'bcpg_material_icons', 'https://fonts.googleapis.com/icon?family=Material+Icons', array(), $this->version, 'all' );
+
+        /**
+         * bcpg.min.css
+         * Archivo de hojas de estilos principales
+         * de la administración
+         */
+		wp_enqueue_style( 'jquery_bcpg_css', BCPG_PLUGIN_DIR_URL . 'helpers/jquery-bcpg/css/bcpg.min.css', array(), $this->version, 'all' );
+
 		wp_enqueue_style( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'public/css/bcpg-public.css', array(), $this->version, 'all' );
         
     }
@@ -103,6 +119,14 @@ class BCPG_Public {
          * entre los ganchos definidos y las funciones definidas en este
          * clase.
 		 */
+
+        /**
+         * bcpg.min.js
+         * Archivo Javascript principal
+         * de la administración
+         */
+        wp_enqueue_script( 'jquery_bcpg_js', BCPG_PLUGIN_DIR_URL . 'helpers/jquery-bcpg/js/bcpg.min.js', ['jquery'], $this->version, true );
+
         wp_enqueue_script( $this->plugin_name, BCPG_PLUGIN_DIR_URL . 'public/js/bcpg-public.js', array( 'jquery' ), $this->version, true );
         
     }
@@ -116,22 +140,8 @@ class BCPG_Public {
         extract( $args, EXTR_OVERWRITE );
         
         if( $id != '' ) {
-            
-            $sql = $this->db->prepare("SELECT nombre, data FROM " . BCPG_TABLE . " WHERE id = %d", $id );
-            $resultado = $this->db->get_results( $sql );
-            
-            if( $resultado[0]->data != '' ) {
-                
-                $data   = json_decode( $resultado[0]->data, true );
-                $nombre = $resultado[0]->nombre;
-                
-                $output = "";
-                
-            } else {
-                
-                $output = "<h5>[No hay información con el ID #$id]";
-                
-            }
+
+            require_once BCPG_PLUGIN_DIR_PATH . 'public/partials/bcpg-public-display.php';
             
             return $output;
             
