@@ -603,6 +603,56 @@
 
     })
 
+    /**
+     * Show more options setting in categories.
+     */
+    var $categorias         = $('#categorias'),
+        $limite             = $('#limite'),
+        $orden              = $('#orden'),
+        $orderby            = $('#orderby'),
+        $categoryTemplate   = $('#categoryTemplate');
+
+    if ( ( $categorias.val() !== null ) && ( ! isNaN( $categorias.val() ) ) ) {
+
+        $limite.prop('disabled', false);
+        $orden.prop('disabled', false);
+        $orderby.prop('disabled', false);
+        $('select').material_select();
+
+    }
+    else {
+
+        $limite.prop('disabled', true);
+        $orden.prop('disabled', true);
+        $orderby.prop('disabled', true);
+        $('select').material_select();
+
+    }
+
+    $categorias.on('change', function () {
+
+        var catValue    = $(this).val();
+
+        if ( ( catValue !== null ) && ( ! isNaN( catValue ) ) ) {
+
+            $limite.prop('disabled', false);
+            $orden.prop('disabled', false);
+            $orderby.prop('disabled', false);
+            $('select').material_select();
+    
+        }
+        else {
+    
+            $limite.prop('disabled', true);
+            $orden.prop('disabled', true);
+            $orderby.prop('disabled', true);
+            $('select').material_select();
+    
+        }
+
+    });
+
+
 })( jQuery );
 
 

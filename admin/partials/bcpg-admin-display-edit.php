@@ -256,10 +256,10 @@ $settings   = $data['settings'];
                                 <div class="loaderengine">
                                     <img src="<?= BCPG_PLUGIN_DIR_URL . '/admin/img/loader.gif' ?>" alt="">
                                 </div>
-                                    
-                                <div class="categoryTemplate">
+                                 
+                                <div class="row">
 
-                                    <div class="row">
+                                    <div class="categoryTemplate">
                                             
                                         <div class='bcpg-carditem col s12 m4'>
                                             <div class='card'>
@@ -338,19 +338,17 @@ $settings   = $data['settings'];
                                             <select id="categorias">
                                                 <option value="" selected disabled>Seleciona la categoría</option>
                                                 <?php
-
-                                                $args = [
+                                                                                            
+                                                $categories = get_categories( [
                                                     'orderby'       => 'name',
                                                     'taxonomy'      => 'category'
-                                                ];
-                                                                                            
-                                                $categories = get_categories( $args );
+                                                ] );
 
                                                 foreach( $categories as $category )
                                                     echo "<option value='{$category->cat_ID}'" . selected( $settings['category'], $category->cat_ID ) . " > ". ucfirst( $category->name ) ." </option>";
 
                                                 ?>
-                                                    
+                                                   
                                             </select>
                                                 
                                         </div>
