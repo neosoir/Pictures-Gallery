@@ -682,13 +682,8 @@
             }, 
             success      : function( data ) {
                 
-                //if( data.result ) {
-                    
-                    $loaderengine.css('display', 'none');
-
-                    $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) )
-
-                //}
+                $loaderengine.css('display', 'none');
+                $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
                 
             }, 
             error: function( d,x,v ) {
@@ -703,7 +698,131 @@
 
     });
 
+    /* Analisando el cambio del límite */
+    $limite.on('keyup', function(){
 
+        var postPerPage     = $(this).val(),
+            catValue        = $categorias.val(),
+            orden           = $orden.val(),
+            orderby         = $orderby.val();
+
+        if(
+            postPerPage != '' &&
+            postPerPage != null &&
+            ! isNaN(postPerPage)
+        ) {
+
+            $('.categoryTemplate > *').remove();
+            $loaderengine.css('display','block');
+
+            $.ajax({
+                url         : bcpg.url,
+                type        : 'POST',
+                dataType    : 'json',
+                data : {
+                    action          : 'bcpg_categorias',
+                    nonce           : bcpg.seguridad,
+                    cat_ID          : catValue,
+                    postPerPage     : postPerPage,
+                    orden           : orden,
+                    orderby         : orderby
+                }, success  : function( data ) {
+
+                    $loaderengine.css('display','none');
+                    $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
+
+
+                }, error: function( d,x,v ) {
+
+                    console.log(d);
+                    console.log(x);
+                    console.log(v);
+
+                }
+            });
+
+        }
+
+    });
+
+    /* Analisando el cambio de orden */
+    $orden.on('change', function(){
+
+        var orden           = $(this).val(),
+            catValue        = $categorias.val(),
+            postPerPage     = $limite.val(),
+            orderby         = $orderby.val();
+
+        $('.categoryTemplate > *').remove();
+        $loaderengine.css('display','block');
+
+        $.ajax({
+            url         : bcpg.url,
+            type        : 'POST',
+            dataType    : 'json',
+            data : {
+                action          : 'bcpg_categorias',
+                nonce           : bcpg.seguridad,
+                cat_ID          : catValue,
+                postPerPage     : postPerPage,
+                orden           : orden,
+                orderby         : orderby
+            }, success  : function( data ) {
+
+                $loaderengine.css('display','none');
+                $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
+
+
+            }, error: function( d,x,v ) {
+
+                console.log(d);
+                console.log(x);
+                console.log(v);
+
+            }
+        });
+
+    });
+
+    /* Analisando el cambio de ordenar por */
+    $orderby.on('change', function(){
+
+        var orderby         = $(this).val(),
+            catValue        = $categorias.val(),
+            postPerPage     = $limite.val(),
+            orden           = $orden.val();
+
+
+        $('.categoryTemplate > *').remove();
+        $loaderengine.css('display','block');
+
+        $.ajax({
+            url         : bcpg.url,
+            type        : 'POST',
+            dataType    : 'json',
+            data : {
+                action          : 'bcpg_categorias',
+                nonce           : bcpg.seguridad,
+                cat_ID          : catValue,
+                postPerPage     : postPerPage,
+                orden           : orden,
+                orderby         : orderby
+            }, success  : function( data ) {
+
+                $loaderengine.css('display','none');
+                $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
+
+
+            }, error: function( d,x,v ) {
+
+                console.log(d);
+                console.log(x);
+                console.log(v);
+
+            }
+        });
+
+    });
 
 })( jQuery );
 
