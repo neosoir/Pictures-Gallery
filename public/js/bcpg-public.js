@@ -6,6 +6,7 @@
 	 * debe estar escrito aquí
 	 */
     
+	 $('.bcpg-container').bcpg();
     
 
 })( jQuery );

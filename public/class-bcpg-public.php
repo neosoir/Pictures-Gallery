@@ -51,6 +51,24 @@ class BCPG_Public {
 	 */
     private $db;
     
+        /**
+	 * Objeto BCPG_Normalize
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $normalize Instancia del objeto BCPG_Normalize
+	 */
+    private $normalize;
+    
+    /**
+	 * Objeto BCPG_Helpers
+	 *
+	 * @since    1.0.0
+	 * @access   private
+	 * @var      object    $helpers Instancia del objeto BCPG_Helpers
+	 */
+    private $helpers;
+
     /**
      * @param string $plugin_name nombre o identificador único de éste plugin.
      * @param string $version La versión actual del plugin.
@@ -59,6 +77,8 @@ class BCPG_Public {
         
         $this->plugin_name = $plugin_name;
         $this->version = $version;
+        $this->helpers = new BCPG_Helpers;
+        $this->normalize = new BCPG_Normalize;
         
         global $wpdb;
         $this->db = $wpdb;
