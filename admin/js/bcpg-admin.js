@@ -675,7 +675,8 @@
                 //if( data.result ) {
                     
                     $loaderengine.css('display', 'none');
-                    console.log(data.posts)
+                    console.log( data.posts )
+                    $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) )
 
                 //}
                 

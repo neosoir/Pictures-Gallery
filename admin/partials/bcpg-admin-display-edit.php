@@ -260,29 +260,7 @@ $settings   = $data['settings'];
                                 <div class="row">
 
                                     <div class="categoryTemplate">
-                                            
-                                        <div class='bcpg-carditem col s12 m4'>
-                                            <div class='card'>
-                                                <div class='card-image'>
-                                                    <img src='http://localhost/_curso01/wp-content/uploads/2022/06/pexels-nathan-cowley-1153369-scaled.jpg' alt='$title'>
-                                                    <span class='card-title'>Cart Title</span>
-                                                    <a target='_blank' href='' class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>link</i></a>
-                                                </div>
-                                                <div class='card-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit velit sapiente laborum fugit excepturi accusantium quisquam, porro inventore et eius accusamus ipsum explicabo aliquam. Doloribus consequuntur ex beatae impedit! Provident!</p></div>
-                                            </div>
-                                        </div>
-                                            
-                                        <div class='bcpg-carditem col s12 m4'>
-                                            <div class='card'>
-                                                <div class='card-image'>
-                                                    <img src='http://localhost/_curso01/wp-content/uploads/2022/06/pexels-nathan-cowley-1153369-scaled.jpg' alt='$title'>
-                                                    <span class='card-title'>Cart Title</span>
-                                                    <a target='_blank' href='' class='btn-floating halfway-fab waves-effect waves-light red'><i class='material-icons'>link</i></a>
-                                                </div>
-                                                <div class='card-content'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Reprehenderit velit sapiente laborum fugit excepturi accusantium quisquam, porro inventore et eius accusamus ipsum explicabo aliquam. Doloribus consequuntur ex beatae impedit! Provident!</p></div>
-                                            </div>
-                                        </div>
-
+                                        <!-- Here come the categories (use js to display) -->
                                     </div>
 
                                 </div>

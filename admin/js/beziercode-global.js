@@ -11,8 +11,8 @@
 
         var core = {
 
-            /* Limpiador de enlaces para las imagenes */
-            limpiarEnlace       :   function ( url ) {
+            // Limpiador de enlaces para las imagenes
+            limpiarEnlace           :   function ( url ) {
                 
                 var local = /localhost/;
                 
@@ -33,8 +33,8 @@
                 }
                 
             },
-            /* Validando que los campos no estén vacíos */
-            validarCamposVacios :   function ( selector ) {
+            // Validando que los campos no estén vacíos.
+            validarCamposVacios     :   function ( selector ) {
                 
                 var $inputs = $( selector ),
                     result  = false;
@@ -65,14 +65,14 @@
                 }
                 
             },
-            validarEmail        :   function ( email ) {
+            validarEmail            :   function ( email ) {
         
                 var er  = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,4})+$/;        
                 
                 return er.test( email );
                 
             },
-            quitarInvalid       :   function ( selector ) {
+            quitarInvalid           :   function ( selector ) {
         
                 var $inputs = $( selector );
                 
@@ -90,7 +90,7 @@
                 
             },
             // Add img to edid page
-            templateItems       :   function ( arrItems ) {
+            templateItems           :   function ( arrItems ) {
         
                 var template    = '',
                     col         = parseInt( $('#columnas').val() ),
@@ -179,7 +179,7 @@
                 }
 
             })(),
-            analizadorFiltros   : function ( selector ) {
+            analizadorFiltros       : function ( selector ) {
 
                 var obj = [];
 
@@ -259,8 +259,8 @@
                 
                 return filtroFinal;
             },
-            /* Crea una template de los botones de filtrado */
-            templateBtnFilter   : function( arrFilter ) {
+            // Crea una template de los botones de filtrado 
+            templateBtnFilter       : function( arrFilter ) {
                 
                 var output = '<li data-filter="*" class="activo">Todo</li>';
                 
@@ -281,7 +281,7 @@
                 return output;
                 
             },
-            addTitleItem        : function( titulo ) {
+            addTitleItem            : function( titulo ) {
 
                 var template = `
                     <div class="title-item">
@@ -292,11 +292,8 @@
                 return template;
                 
             },
-            /**
-             * Convierte el array de items
-             * en un objeto ordenado
-             */
-             toObject                        : function( arrItems ) {
+            // Convierte el array de items en un objeto ordenado.
+             toObject               : function( arrItems ) {
                 
                 var obj = {
                     items : []
@@ -354,6 +351,44 @@
                 return obj;
                 
             },
+            // Add category part.
+            templateCardCategory    : function( posts ) {
+                
+                var template = '',
+                    col      = parseInt($('#columnas').val()),
+                    classCol = '';
+                
+                switch( col ) {
+                    case 2:
+                        classCol = 'm6';
+                        break;
+                    case 3:
+                        classCol = 'm4';
+                        break;
+                    case 4:
+                        classCol = 'm3';
+                        break;
+                }
+                
+                for( var i=0, p=posts.length; i<p; i++) {
+                    
+                    template += `
+                        <div class="bcpg-carditem col s12 '${ classCol }">
+                            <div class="card">
+                                <div class="card-image">
+                                    <img src="${ posts[i].imgurl }">
+                                    <span class="card-title">${ posts[i].title }</span>
+                                    <a target="_blank" href="${ posts[i].link }" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">link</i></a>
+                                </div>
+                                <div class="card-content">${ posts[i].excerpt }</p></div>
+                            </div>
+                        </div>`;
+                
+                }
+                
+                return template;
+                
+            }
         }
 
         return core;
