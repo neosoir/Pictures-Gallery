@@ -378,17 +378,21 @@
                                 <div class="card-image">
                                     <img src="${ posts[i].imgurl }">
                                     <span class="card-title">${ posts[i].title }</span>
-                                    <a target="_blank" href="${ posts[i].link }" class="btn-floating halfway-fab waves-effect waves-light red"><i class="material-icons">link</i></a>
+                                    <a target="_blank" href="${ posts[i].link }" class="btn-floating halfway-fab waves-effect waves-light red">
+                                        <i class="material-icons">link</i>
+                                    </a>
                                 </div>
                                 <div class="card-content">${ posts[i].excerpt }</p></div>
                             </div>
-                        </div>`;
+                        </div>
+                    `;
                 
                 }
-                
+                console.log(template)
                 return template;
                 
             }
+
         }
 
         return core;

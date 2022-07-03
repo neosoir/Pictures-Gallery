@@ -610,7 +610,7 @@
         $limite             = $('#limite'),
         $orden              = $('#orden'),
         $orderby            = $('#orderby'),
-        $categoryTemplate   = $('#categoryTemplate'),
+        $categoryTemplate   = $('.categoryTemplate'),
         $loaderengine       = $('.loaderengine');
 
     if ( ( $categorias.val() !== null ) && ( ! isNaN( $categorias.val() ) ) ) {
