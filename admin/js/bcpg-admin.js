@@ -610,7 +610,8 @@
         $limite             = $('#limite'),
         $orden              = $('#orden'),
         $orderby            = $('#orderby'),
-        $categoryTemplate   = $('#categoryTemplate');
+        $categoryTemplate   = $('#categoryTemplate'),
+        $loaderengine       = $('.loaderengine');
 
     if ( ( $categorias.val() !== null ) && ( ! isNaN( $categorias.val() ) ) ) {
 
@@ -631,7 +632,11 @@
 
     $categorias.on('change', function () {
 
-        var catValue    = $(this).val();
+        var catValue        = $(this).val(),
+            postPerPage     = $limite.val(),
+            orden           = $orden.val(),
+            orderby        = $orderby.val();
+            
 
         if ( ( catValue !== null ) && ( ! isNaN( catValue ) ) ) {
 
@@ -650,7 +655,43 @@
     
         }
 
+        $('.categoryTemplate > *').remove();
+        $loaderengine.css('display', 'block');
+
+        $.ajax({
+            url         : bcpg.url,
+            type        : 'POST',
+            dataType    : 'json',
+            data : {
+                action          : 'bcpg_categorias',
+                nonce           : bcpg.seguridad,
+                cat_ID          : catValue,
+                postPerPage     : postPerPage,
+                orden           : orden,
+                orderby         : orderby
+            }, 
+            success      : function( data ) {
+                
+                //if( data.result ) {
+                    
+                    $loaderengine.css('display', 'none');
+                    console.log(data.posts)
+
+                //}
+                
+            }, 
+            error: function( d,x,v ) {
+                
+                console.log(d);
+                console.log(x);
+                console.log(v);
+                
+            }
+            
+        });
+
     });
+
 
 
 })( jQuery );

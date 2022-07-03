@@ -457,6 +457,7 @@ class BCPG_Admin {
                     
                     $posts[$c]['title']     = get_the_title();
                     $posts[$c]['content']   = get_the_content();
+                    // short version of contend.
                     $posts[$c]['excerpt']   = get_the_excerpt();
                     
                     if( has_post_thumbnail() ) {
@@ -474,7 +475,9 @@ class BCPG_Admin {
                             'medium'
                         );
                         
-                    } else {
+                    } 
+                    
+                    else {
                         $posts[$c]['imgtag'] = null;
                         $posts[$c]['imgurl'] = null;
                     }

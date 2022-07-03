@@ -187,7 +187,8 @@ class BCPG_Master {
         
         $this->cargador->add_action( 'wp_ajax_bcpg_data', $this->bcpg_admin, 'ajax_data' );
         $this->cargador->add_action( 'wp_ajax_bcpg_crud_gallery', $this->bcpg_admin, 'ajax_crud_gallery' );
-        
+		$this->cargador->add_action( 'wp_ajax_bcpg_categorias', $this->bcpg_admin, 'ajax_categorias' );
+
     }
     
     /**
