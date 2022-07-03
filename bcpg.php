@@ -13,7 +13,7 @@
  * @wordpress-plugin
  * Plugin Name:         Portfolio Gallery
  * Plugin URI:          https://neoslab.online
- * Description:         Crea una galería tipo portafolio y también toma valores de publicaciones a msotrar
+ * Description:         Plugin to create a portafolio type gallery and also takes values of publications to display in frontend.
  * Version:             1.0.0
  * Author:              Neos Lab
  * Author URI:          https://neoslab.online
