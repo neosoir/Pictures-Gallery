@@ -698,22 +698,21 @@
 
     });
 
-    /* Analisando el cambio del límite */
-    $limite.on('keyup', function(){
+    // change limit
+    $limite.on('keyup', function () {
 
         var postPerPage     = $(this).val(),
             catValue        = $categorias.val(),
             orden           = $orden.val(),
             orderby         = $orderby.val();
 
-        if(
-            postPerPage != '' &&
-            postPerPage != null &&
-            ! isNaN(postPerPage)
-        ) {
+        $('.categoryTemplate > *').remove();
+        $loaderengine.css('display', 'block');
 
-            $('.categoryTemplate > *').remove();
-            $loaderengine.css('display','block');
+        if (    ( postPerPage !== '' ) &&
+                ( postPerPage !== null ) &&
+                ( ! isNaN( postPerPage )  ) 
+        ) {
 
             $.ajax({
                 url         : bcpg.url,
@@ -726,27 +725,30 @@
                     postPerPage     : postPerPage,
                     orden           : orden,
                     orderby         : orderby
-                }, success  : function( data ) {
-
-                    $loaderengine.css('display','none');
+                }, 
+                success      : function( data ) {
+                    
+                    $loaderengine.css('display', 'none');
                     $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
-
-
-                }, error: function( d,x,v ) {
-
+                    
+                }, 
+                error: function( d,x,v ) {
+                    
                     console.log(d);
                     console.log(x);
                     console.log(v);
-
+                    
                 }
+                
             });
 
         }
 
+
     });
 
-    /* Analisando el cambio de orden */
-    $orden.on('change', function(){
+    // change order
+    $orden.on('change', function () {
 
         var orden           = $(this).val(),
             catValue        = $categorias.val(),
@@ -754,7 +756,7 @@
             orderby         = $orderby.val();
 
         $('.categoryTemplate > *').remove();
-        $loaderengine.css('display','block');
+        $loaderengine.css('display', 'block');
 
         $.ajax({
             url         : bcpg.url,
@@ -767,24 +769,26 @@
                 postPerPage     : postPerPage,
                 orden           : orden,
                 orderby         : orderby
-            }, success  : function( data ) {
-
-                $loaderengine.css('display','none');
+            }, 
+            success      : function( data ) {
+                
+                $loaderengine.css('display', 'none');
                 $categoryTemplate.append( Beziercode.templateCardCategory( data.posts ) );
-
-
-            }, error: function( d,x,v ) {
-
+                
+            }, 
+            error: function( d,x,v ) {
+                
                 console.log(d);
                 console.log(x);
                 console.log(v);
-
+                
             }
+            
         });
 
     });
 
-    /* Analisando el cambio de ordenar por */
+    // change order by
     $orderby.on('change', function(){
 
         var orderby         = $(this).val(),
