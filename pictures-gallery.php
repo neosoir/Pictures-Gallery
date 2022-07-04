@@ -10,6 +10,8 @@
  * Plugin URI:          https://neoslab.online
  * Description:         Create a portafolio type gallery and also takes values of publications to display in frontend using shorcodes.
  * Version:             1.0.0
+ * Requires at least:   6.0
+ * Requires PHP:        7.4
  * Author:              Neos Lab
  * Author URI:          https://neoslab.online
  * License:             GPL2
