@@ -1,19 +1,14 @@
 <?php
 /**
- * Archivo del plugin 
- * Este archivo es leído por WordPress para generar la información del plugin
- * en el área de administración del complemento. Este archivo también incluye 
- * todas las dependencias utilizadas por el complemento, registra las funciones 
- * de activación y desactivación y define una función que inicia el complemento.
  *
- * @link                https://beziercode.com.co
+ * @link                https://neoslab.online
  * @since               1.0.0
- * @package             BCPortfolioGallery
+ * @package             gallery-pictures
  *
  * @wordpress-plugin
- * Plugin Name:         Portfolio Gallery
+ * Plugin Name:         Pictures gallery 
  * Plugin URI:          https://neoslab.online
- * Description:         Plugin to create a portafolio type gallery and also takes values of publications to display in frontend.
+ * Description:         Create a portafolio type gallery and also takes values of publications to display in frontend using shorcodes.
  * Version:             1.0.0
  * Author:              Neos Lab
  * Author URI:          https://neoslab.online
@@ -22,6 +17,7 @@
  * Text Domain:         bcpg-textdomain
  * Domain Path:         /languages
  */
+
 
 if ( ! defined( 'WPINC' ) ) {
 	die;

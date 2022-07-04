@@ -98,7 +98,7 @@ $settings   = $data['settings'];
                 <div class="logo-bcpg">
                     <img src="<?= BCPG_PLUGIN_DIR_URL ?>admin/img/core-50.svg" alt="">
                     <span class="border-v v-31"></span>
-                    <span><?= esc_html_e('Portafolio Galería', 'bcpg_textdomain') ?></span>
+                    <span><?= esc_html_e('Pictures Gallery', 'bcpg_textdomain') ?></span>
                 </div>
             </div>
             
